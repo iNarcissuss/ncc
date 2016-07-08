@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>iSEC Research Labs</title>
+      <meta name="viewport" content="width=device-width">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/css/syntax.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/css/main.css">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-47756501-1', 'isecpartners.github.io');
+        ga('send', 'pageview');
+
+      </script>
+   </head>
+   <body>
+      <div id="container">
+         <div class="inner">
+
+               <header>
+               <img src="/images/iseclogo.png">
+               <h2 class="title">iSEC Research Labs</h2>
+               <div id="navbar">
+               <a class="extra" href="/">Home</a> |
+               <a class="extra" href="/blog">Archives</a> |
+               <a class="extra" href="/tools">Tools</a> |
+               <a class="extra" href="/research">Research</a>
+               </div>
+              </header>
+
+            <section id="" class="main_content">
+               <!-- This loops through the paginated posts -->
+
+<div>
+    <h2 class="posttitle">Tool Release: YoNTMA</h2>
+    <h6>18 Mar 2013 - Michael Lynch</h6>
+</div>
+
+  <div lang="en" class="postmainpage">
+
+<p>You&#39;re a responsible defender of your data. You keep all of your disks encrypted. You hibernate your laptop when you&#39;re not using it to keep any sensitive data out of RAM. You&#39;re known by friends, family, and colleagues as a tireless crusader against data theft. But do you hibernate your laptop when you visit a co-worker&#39;s office for a few minutes? What about when you get up to use the bathroom? What happens if a thief snatches your laptop while it&#39;s locked, but still powered on? The encryption keys are still in memory, which makes them vulnerable to DMA or cold boot attacks. Once the thief has the data encryption keys, they effectively have physical access to an unencrypted laptop, which means game over for your data. </p>
+
+<h3>You&#39;ll Never Take Me Alive!</h3>
+
+<p>Enter <em>YoNTMA</em>! <em>YoNTMA</em> (You&#39;ll Never Take Me Alive!) is a tool designed to enhance the protection of encrypted data. <em>YoNTMA</em> runs as a background service and begins monitoring your computer any time the screen is locked. If the power cable or Ethernet cable is disconnected from the system while your laptop is locked, <em>YoNTMA</em> will immediately hibernate the machine to ensure that the disk encryption keys do not remain in RAM. This ensures that if a thief walks off with your powered-on laptop, your encrypted data stays protected.</p>
+
+<h3>Project Page</h3>
+
+<p>iSEC Partners is pleased to announce the first public release of <em>YoNTMA</em>. The project is hosted on <a href="https://github.com/iSECPartners/yontma">GitHub</a>.
+Try it out and let us know what features you&#39;d like to see or any other feedback you have on the <a href="https://github.com/iSECPartners/yontma/issues">Issues</a> page.</p>
+
+</div>
+
+<div>
+    <h2 class="posttitle">Tool Release: tcpprox</h2>
+    <h6>21 Feb 2013 - Tim Newsham</h6>
+</div>
+
+  <div lang="en" class="postmainpage">
+
+<p><em>Tcpprox</em> is a simple command line tcp proxy written in Python. It is designed to have very minimal requirements - it runs directly from Python (tested in Python 2.7) from a single source file (unless the auto-certificate option is used).</p>
+
+<p>When running, the proxy accepts incoming TCP connections and copies data to a TCP connection to another machine. Options allow for SSL and IPv6 connections and for the logging of all data. Data is logged in a format that preserves connection, timing and direction information and a small utility is provided to dump out the information in various formats. A small utility is also provided for generating CA and SSL certificates. This utility is the only component that relies on an external python library, but it can be run on a different machine if necessary.</p>
+
+<p>In comparison with other TCP proxy tools, <em>tcpprox</em> is:</p>
+
+<ul>
+<li>simpler.</li>
+<li>built to support both IPv6 and IPv4.</li>
+<li>able to auto-generate SSL certificates.</li>
+<li>capable of extensive logging in different formats.</li>
+</ul>
+
+<h3>Project Page</h3>
+
+<p>Check it out on <em>tcpprox</em>&#39;s <a href="https://github.com/iSECPartners/tcpprox">Github page</a>.</p>
+
+</div>
+
+<div>
+    <h2 class="posttitle">Exploring SSL Pinning on iOS</h2>
+    <h6>19 Feb 2013 - Alban Diquet</h6>
+</div>
+
+  
+  <div lang="en" class="post">
+
+<p>When an iOS app only needs to communicate to a well-defined set of servers over SSL, the security of the app&#39;s network communications can be improved through SSL pinning. By requiring a specific certificate to be part of the server&#39;s certificate chain, the threat of a rogue CA or a CA compromise is significantly reduced.</p>
+
+<p>To simplify the process of adding this security feature to iOS apps, I released some source code as part of iSEC Partners&#39; <a href="https://github.com/iSECPartners/ssl-conservatory/tree/master/ios">SSL conservatory project</a>. The two source files can easily be added to an existing iOS app and provide a simple API to pin certificates to the domains the app needs to connect to.</p>
+
+<h4>The <em>SSLCertificatePinning</em> class</h4>
+
+<p>This implementation allows a developer to pin a certificate for any number of domains the application needs to connect to. Specifically, developers can whitelist a certificate that will have to be part of the certificate chain sent back by the server during the SSL handshake. This gives additional flexibility as developers can decide to pin the CA/anchor certificate, the server/leaf certificate, or any intermediate certificate for a given domain. Each option has different advantages and limitations; for example, pinning the server/leaf certificate provides the best security but the certificate is going to change more often than the CA/anchor certificate. A change in the certificate (for example because it expired) will result in the app being unable to connect to the server. When that happens, the new certificate can be pushed to users by releasing a new version of the iOS app.</p>
+
+<p>The <em>SSLCertificatePinning</em> API only exposes two methods and a convenience class:</p>
+
+<ul>
+<li><em>+(BOOL)loadSSLPinsFromDERCertificates:(NSDictionary *)certificates</em></li>
+</ul>
+
+<p>This method takes a dictionary with domain names as keys and DER-encoded certificates as values and stores them in a pre-defined location on the filesystem.</p>
+
+<ul>
+<li><em>+(BOOL)verifyPinnedCertificateForTrust:(SecTrustRef)trust andDomain:(NSString *)domain</em></li>
+</ul>
+
+<p>This method accesses the certificates previously loaded using the <em>loadSSLPinsFromDERCertificates:</em> method and looks in the trust object&#39;s certificate chain for a certificate pinned to the given domain.
+<em>SecTrustEvaluate()</em> should always be called before this method to ensure that the certificate chain is valid.</p>
+
+<h4>The <em>SSLPinnedNSURLConnectionDelegate</em> class</h4>
+
+<p>The <em>SSLPinnedNSURLConnectionDelegate</em> class is designed to be subclassed and extended to implement the <em>NSURLConnectionDelegate</em> protocol and be used as a delegate for <em>NSURLConnection</em> objects. This class implements the <em>connection:willSendRequestForAuthenticationChallenge:</em> method so that it automatically validates that the certificate pinned to the domain the NSURLConnection object is accessing is part of the server&#39;s certificate chain.</p>
+
+<h3>Cocoa Touch Shortcomings</h3>
+
+<p>Specific limitations due to what functions the iOS API exposes to developers and how much freedom they have when dealing with certificate validation prevented me from implementing some of the ideas that I had in mind when I started this project.</p>
+
+<h4>Public key pinning</h4>
+
+<p>For various reasons, it is actually better to pin a public key to a domain rather than the whole certificate. Unfortunately, public key pinning can only be partially implemented on iOS. While it is possible to extract the public key from a given certificate using a convoluted series of APIs calls (<em>SecTrustCreateWithCertificates()</em> and <em>SecTrustCopyPublicKey()</em>), the anchor certificate for a given certificate chain cannot be accessed. Therefore, as the anchor/CA public key cannot be extracted and validated, only the public key of the leaf or any intermediate certificates can be pinned to a domain.</p>
+
+<h4>SSL pinning in webviews</h4>
+
+<p>On iOS, the <em>UIWebView</em> class can be used to directly embed and display web content inside an app. However, as opposed to regular network communication APIs such as <em>NSURLConnection</em>, authentication challenges cannot be reliably handled when using the <em>UIWebView</em> class. Various tricks exist, for example to perform HTTP Basic authentication or to disable certificate validation within a webview through a credential caching mechanism. However, the lack of explicit APIs to configure the webview&#39;s behavior makes it unsuitable for SSL pinning.</p>
+
+<h4>Revocation</h4>
+
+<p>Revocation checking is needed even when doing certificate pinning. However, there is no way on iOS to configure how revocation should be handled. The default behavior is to only check revocation for EV certificates, and this validation is &quot;best attempt&quot;, meaning that if the OCSP server cannot be reached, the validation will still not fail.</p>
+
+<h3>Project Page</h3>
+
+<p>The <a href="https://github.com/iSECPartners/ssl-conservatory/tree/master/ios">SSL Conservatory</a> on GitHub.</p>
+
+</div>
+
+
+<!-- Pagination links - http://jekyllrb.com/docs/pagination/ -->
+
+<div class="pagination">
+  
+    <a href="/page5">&laquo; Prev</a>
+  
+
+  
+    
+      <a href="/index.html">1</a>
+    
+  
+    
+      <a href="/page2">2</a>
+    
+  
+    
+      <a href="/page3">3</a>
+    
+  
+    
+      <a href="/page4">4</a>
+    
+  
+    
+      <a href="/page5">5</a>
+    
+  
+    
+      <em>6</em>
+    
+  
+
+  
+    <span>Next &raquo;</span>
+  
+</div>
+
+
+            </section>
+
+
+            <footer style="clear: both;">
+               <div> iSEC Partners 2014 -
+                     <a href="https://github.com/isecpartners/">iSEC on GitHub</a> -
+                     <a href="https://www.isecpartners.com/about/careers.aspx">Join us!</a>
+               </div>
+            </footer>
+         </div>
+      </div>
+      <!-- /container -->
+   </body>
+</html>

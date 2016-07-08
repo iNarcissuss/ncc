@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>iSEC Research Labs</title>
+      <meta name="viewport" content="width=device-width">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/css/syntax.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/css/main.css">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-47756501-1', 'isecpartners.github.io');
+        ga('send', 'pageview');
+
+      </script>
+   </head>
+   <body>
+      <div id="container">
+         <div class="inner">
+
+               <header>
+               <img src="/images/iseclogo.png">
+               <h2 class="title">iSEC Research Labs</h2>
+               <div id="navbar">
+               <a class="extra" href="/">Home</a> |
+               <a class="extra" href="/blog">Archives</a> |
+               <a class="extra" href="/tools">Tools</a> |
+               <a class="extra" href="/research">Research</a>
+               </div>
+              </header>
+
+            <section id="" class="main_content">
+               <!-- This loops through the paginated posts -->
+
+<div>
+    <h2 class="posttitle">SSLyze v0.8 released</h2>
+    <h6>30 Dec 2013 - Alban Diquet</h6>
+</div>
+
+  <div lang="en" class="postmainpage">
+
+<p>A new version of <a href="https://github.com/iSECPartners/sslyze">SSLyze</a> is now available. SSLyze is a Python tool that can analyze the SSL configuration of a server by connecting to it.</p>
+
+<h3>Changelog</h3>
+
+<ul>
+<li>Additional certificate chain validation using the Apple, Microsoft and Java trust stores in addition to Mozilla&#39;s</li>
+<li>Added support for StartTLS RDP; see --starttls=rdp</li>
+<li>Greatly improved the reliability and accuracy of scan results by adding an exponential backoff algorithm to retry failed network connections. This will especially impact scans against servers that stop properly answering after several concurrent connections have already been opened. The number of retry attempts can be controlled using --nb_retries</li>
+<li>Bug fixes including:
+
+<ul>
+<li>Better results when the server requested a client certificate but none was supplied</li>
+<li>Clarified text and XML output</li>
+</ul></li>
+</ul>
+
+<h3>Packages</h3>
+
+<p>SSLyze requires Python 2.7; the supported platforms are Windows 7 32/64 bits,
+Linux 32/64 bits and OS X 64 bits.</p>
+
+<p>SSLyze is statically linked with OpenSSL 1.0.1e. For this reason, the easiest
+way to run SSLyze is to download one the pre-compiled packages available in
+the <a href="https://github.com/iSECPartners/sslyze/releases">release section</a> of the project&#39;s page on GitHub.</p>
+
+</div>
+
+<div>
+    <h2 class="posttitle">Fuzzing RTSP to discover an exploitable vulnerability in VLC</h2>
+    <h6>30 Dec 2013 - Michael Lynch</h6>
+</div>
+
+  <div lang="en" class="postmainpage">
+
+<p>In this post, we will describe the bug iSEC recently discovered in the Live555
+library (CVE-2013-6933, CVE-2013-6934). This yielded a remote code execution
+vulnerability in all client and server applications that use the Live555
+library, including the popular media player VLC.</p>
+
+<h3>Background</h3>
+
+<p>Over the past several months, I&#39;ve been using the <a href="http://www.peachfuzzer.com">Peach
+framework</a> to create a fuzzer for client
+implementations of the RTSP protocol. For those not familiar, RTSP is a
+protocol that helps media players stream content. It is a text-based format
+that closely resembles HTTP. A simple RTSP request looks like the following:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">GET_PARAMETER rtsp://streams.isecpartners.com/foo/bar.mp4 RTSP/1.0
+CSeq: 9
+Content-Type: text/parameters
+Session: 12345678
+Content-Length: 24
+
+packets_received
+jitter
+</code></pre></div>
+<p>My first two fuzzing targets were QuickTime and VLC, two popular media players
+that implement the RTSP protocol. After running 250,000 iterations against
+both, QuickTime had a few crashes, though none of them seemed exploitable
+(NULL pointer dereferences and the like). The VLC fuzzing yielded something
+more interesting.</p>
+
+<h3>Discovery</h3>
+
+<p>The issue is a write access violation when VLC receives an RTSP message of the
+following form:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> A RTSP/1.0
+CSeq: 10
+Content-Type: text/parameters
+Session: 12345678
+Content-Length: 24
+
+packets_received
+jitter
+</code></pre></div>
+<p>Note that instead of starting with an RTSP command, the request begins with a
+space character. To understand why this causes an access violation, we&#39;ll jump
+into VLC&#39;s RTSP handling code, which is actually a 3rd party library called
+<a href="http://www.live555.com/liveMedia/">Live555</a>. The vulnerable function is
+parseRTSPRequestString(), which begins as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">unsigned i;
+for (i = 0; i &lt; resultCmdNameMaxSize-1 &amp;&amp; i &lt; reqStrSize; ++i) {
+  char c = reqStr[i];
+  if (c == &#39; &#39; || c == &#39;\t&#39;) {
+    parseSucceeded = True;
+    break;
+  }
+
+  resultCmdName[i] = c;
+}
+resultCmdName[i] = &#39;\0&#39;;
+if (!parseSucceeded) return False;
+</code></pre></div>
+<p>Here we can begin to see what the problem is. If reqStr begins with a space or
+tab character, the function believes that it has parsed the RTSP command
+(stored in resultCmdName), when in fact it has parsed nothing. Continuing a
+bit further down in the function, we have the following code block:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">// [Ed: At this point, variables have the following values:
+//  i=0
+//  k=1
+//  k1=0
+//  n=0]
+n = 0; k2 = i + 1;
+if (i &lt;= k) {
+  if (k1 - i &gt; resultURLPreSuffixMaxSize) return False;
+  while (k2 &lt;= k1 - 1) resultURLPreSuffix[n++] = reqStr[k2++];
+}
+</code></pre></div>
+<p>This means that the while statement is really equivalent to:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">while (k2 &lt;= 0xffffffff) resultURLPreSuffix[n++] = reqStr[k2++];
+</code></pre></div>
+<p>which is equivalent to:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">while (true) resultURLPreSuffix[n++] = reqStr[k2++];
+</code></pre></div>
+<p>because k2 is an unsigned int and can never be greater than 0xffffffff.</p>
+
+<h3>Exploitation</h3>
+
+<p>Right now, this is looking very promising. reqStr points to an address on the
+heap, and the attacker has a great deal of control over the heap contents
+through previous RTSP messages. resultURLPreSuffix points to an address on the
+stack. This means that we can overwrite the entire stack with attacker
+controlled data. The problem, in the words of security researcher and singer,
+M. Cyrus:</p>
+
+<p><img src="../../../../../images/miley-wecantstop.jpg" alt="Miley Cyrus - &quot;We can&#39;t stop and we won&#39;t stop&quot;"></p>
+
+<p>We can overwrite the stack, but we can&#39;t terminate the write and continue
+execution. We&#39;re trapped in this infinite loop until the access violation
+occurs when we reach unallocated memory.</p>
+
+<p>At this point, I was stuck. I shared my results with some colleagues
+internally and Andreas Junestam, one of iSEC&#39;s Distinguished Security
+Engineers, pointed out to me that I could actually use the access violation to
+my advantage on Windows. The SEH chain is stored on the stack, so I could
+overwrite it and gain code execution when the access violation occurs (Corelan
+has a <a href="https://www.corelan.be/index.php/2009/07/25/writing-buffer-overflow-exploits-a-quick-and-basic-tutorial-part-3-seh/">nice
+tutorial</a>
+on how to do this). Within a couple days, I was able to produce a simple proof
+of concept that pops calc on Windows XP SP3.</p>
+
+<p><a href="http://www.youtube.com/watch?v=fhqWdkUSWXQ"><img src="../../../../../images/youtube_screenshot_vlc.png" alt="VLC proof of concept exploit"></a></p>
+
+<p>I&#39;m cheating a bit by using XP, as every VLC binary for Windows since v.1.0.5
+is compiled with DEP, and ASLR. The last version of VLC that was compiled
+without ASLR or DEP was v.1.0.5, though that precedes the vulnerability, which
+was introduced in v.2.0.0. VLC v.2.1.1 has SafeSEH, DEP, and ASLR enabled, but
+I can bypass SafeSEH on XP by jumping to a ROP gadget located within process
+memory but outside of loaded modules. I could find no such reliable gadget
+available on Vista and above, especially with ASLR enabled.</p>
+
+<h3>Exploitation Vectors</h3>
+
+<h4>Clients</h4>
+
+<p>The video demonstrates three different vectors through which an attacker can
+exploit this vulnerability against VLC users. The simplest and most
+straightforward vector is to trick a user into manually connecting to a
+malicious RTSP server by instructing the victim to select Media &gt; Open Network
+Stream and enter the malicious RTSP server address.</p>
+
+<p>A more realistic attack vector is to use .pls files. These are playlist files
+that specify a list of files or streams for a media player to play. When a
+user installs VLC, it registers itself as the default handler for .pls files.
+When VLC opens a .pls file, it will automatically connect to any RTSP streams
+specified in the file.</p>
+
+<p>The most practical and frightening attack vector is via the VLC browser
+plugin. By default, VLC installs both a Mozilla-based and ActiveX plugin for
+all available browsers. This allows any web site that a victim visits to
+launch VLC with site-supplied parameters. An attacker can easily use this to
+force VLC to connect to a malicious RTSP server and compromise the victim&#39;s
+system.</p>
+
+<h4>Servers</h4>
+
+<p>Because the vulnerable code is in a component that both RTSP clients and
+servers share in the Live555 library, an attacker can exploit this against
+Live555-based RTSP servers as well (including VLC). On Windows platforms, the
+attacker can gain remote code execution using a similar method to the client
+attack described above. Regardless of the platform, the attacker can perform
+denial of service attacks against the server, as the malformed requests will
+cause the server to crash.</p>
+
+<h3>Versions Affected</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">VLC Version | Live555 Version | Vulnerability
+------------+-----------------+--------------
+2.1.2       | 2013.12.05      | Fixed
+            | 2013.11.29      | Fixed
+            | 2013.11.26      | Partial fix
+2.1.1       | 2012.12.18      | Vulnerable
+2.1.0       | 2012.12.18      | Vulnerable
+2.0.0       | 2011.12.23      | Vulnerable
+            | 2011.08.13      | Vulnerability introduced
+            | 2011.07.21      | Unaffected
+1.1.9       | 2011.01.06      | Unaffected
+1.1.0       | 2010.03.16      | Unaffected
+1.0.5       | 2010.01.07      | Unaffected
+</code></pre></div>
+<h3>Disclosure Timeline</h3>
+
+<ul>
+<li>11/25/2013 - iSEC notifies vendor (Live Networks) of the issue
+(CVE-2013-6933)</li>
+<li>11/26/2013 - Live Networks partially fixes issue</li>
+<li>11/29/2013 - iSEC tests the fix, identifies remaining variant of original
+vulnerability (CVE-2013-6934), notifies Live Networks</li>
+<li>11/29/2013 - Live Networks fixes issue, encourages clients to upgrade in
+<a href="http://www.live555.com/liveMedia/public/changelog.txt">changelog</a></li>
+<li>12/01/2013 - iSEC confirms fix in Live555</li>
+<li>12/09/2013 - VLC releases version 2.1.2, which includes Live555 version
+2013.12.05, fixing the issue</li>
+</ul>
+
+<h3>Mitigations</h3>
+
+<h4>For end-users</h4>
+
+<p>Upgrade to VLC 2.1.2. To limit your exposure to future vulnerabilities,
+consider leaving the VLC plugin disabled in your browser or setting it to
+<a href="http://krebsonsecurity.com/2013/03/help-keep-threats-at-bay-with-click-to-play/">Click-to-Play</a>. Do not use VLC to open untrusted .pls files.</p>
+
+<p>For users of other applications that depend on Live555, do not connect to
+untrusted RTSP streams until the client is updated to use live.2013.11.29 or
+higher.</p>
+
+<h4>For developers that use the Live555 library</h4>
+
+<p>Update your application to the latest version of Live555 as soon as possible.
+Urge your users to patch quickly.</p>
+
+<h4>For RTSP server administrators</h4>
+
+<p>Upgrade your RTSP server to use a Live555 library version 2013.11.29 or later.
+If you cannot immediately do this, download the latest <a href="http://www.live555.com/liveMedia/public/live555-latest.tar.gz">Live555
+source</a> and
+build the Live555 Proxy Server. Run vulnerable RTSP servers on the back end,
+where they are not exposed to malicious RTSP requests. Use the Live555 Proxy
+Server as the externally facing server to route RTSP requests to back end RTSP
+servers. If the Live555 Proxy Server receives an RTSP request that is
+attempting to exploit this vulnerability, it will reject the request with RTSP
+400 Bad Request without passing it along to a vulnerable back end server.</p>
+
+<h3>Conclusions</h3>
+
+<p>This type of attack should serve as a reminder to users to be very
+conservative with their browser plugin configurations. Remember that browser
+plugins (meaning Mozilla-based and ActiveX plugins) run in processes outside
+of the browser sandbox and are responsible for parsing arbitrary data from
+arbitrary web sites. For an application such as VLC, which accepts many <a href="https://wiki.videolan.org/VLC_Features_Formats/">file
+formats</a> and
+<a href="https://wiki.videolan.org/Protocols/">protocols</a>, the attack surface is quite
+large. Users should enable plugins, not only if they trust the plugin to be
+non-malicious, but if they trust it to withstand attacks from <em>any</em> <em>web</em>
+<em>site</em> that&#39;s malicious.</p>
+
+</div>
+
+<div>
+    <h2 class="posttitle">iSEC Engages in TrueCrypt Audit</h2>
+    <h6>23 Dec 2013 - Tom Ritter</h6>
+</div>
+
+  <div lang="en" class="postmainpage">
+
+<p><a href="http://istruecryptauditedyet.com/">Is TrueCrypt audited yet</a>? It&#39;s finally
+happening.</p>
+
+<p>For the past few months, there has been much ado about TrueCrypt, the popular
+open-source encryption software. Despite being the most widely-used and
+simplest encryption software around, the security of its source code and
+binaries has come into question. The groundswell of interest from the security
+community became a crowdsourced campaign to have TrueCrypt undergo a
+professional security audit.</p>
+
+<p>Today, we are excited to announce that iSEC Partners will be participating in
+that audit!</p>
+
+<p>iSEC is both honored and fortunate to be part of the security audit of
+TrueCrypt. Our task will be to pore over the 70,000+ lines of source code,
+helping answer outstanding questions the security community has about the
+software&#39;s foundations. iSEC will be focusing on the Windows kernel code, the
+bootloader, the filesystem driver, and the areas around this code. Our efforts
+will complement the analyses being performed by others on other parts of the
+software.</p>
+
+<p>The speed with which funds were raised underscores the importance of this
+project to the community. This audit is part of a broad plan to transform
+TrueCrypt from a &quot;seems okay&quot; solution into a trusted project with
+reproducible, trusted builds available to all. Being part of this effort is an
+opportunity iSEC does not take for granted. TrueCrypt is, as others have said,
+&quot;too important to have this little transparency&quot;. iSEC is excited to help
+bring more trust and transparency to TrueCrypt!</p>
+
+</div>
+
+<div>
+    <h2 class="posttitle">Login Service Security</h2>
+    <h6>17 Dec 2013 - Rachel Engel</h6>
+</div>
+
+  <div lang="en" class="postmainpage">
+
+<p>Web application login services are deceptively simple to develop, leading
+application developers to repeat the mistakes of the past. Learning from the
+best available mitigations for login service vulnerabilities can have a
+significant organizational impact in terms of protecting customers and
+reducing costs related to account breaches.</p>
+
+<p>This paper explores login service security using attack and defense patterns
+and anti-patterns, offering application developers an easy to follow guide to
+correctly writing login services. While brute force attacks can&#39;t be
+completely stopped, they can be drastically reduced using a few simple
+techniques.</p>
+
+<p>The paper can be downloaded <a href="https://github.com/iSECPartners/publications/blob/master/whitepapers/login_service_security.pdf?raw=true">here</a>.</p>
+
+</div>
+
+<div>
+    <h2 class="posttitle">SSL pinning bypass and other Android tools</h2>
+    <h6>13 Dec 2013 - Marc Blanchou</h6>
+</div>
+
+  
+  <div lang="en" class="post">
+
+<p>iSEC is releasing several <a href="http://www.cydiasubstrate.com/">Cydia Substrate</a> extensions to
+facilitate the black box testing of Android applications:</p>
+
+<h4>Android-SSL-TrustKiller</h4>
+
+<p>This tool hooks various methods in order to disable SSL certificate pinning,
+by forcing the Android application to accept any SSL certificate. Once
+installed, it works across all applications on a device. See the <a href="https://github.com/iSECPartners/Android-SSL-TrustKiller">project
+page</a>.</p>
+
+<h4>Android-KillPermAndSigChecks</h4>
+
+<p>This tool disables signature and permission checks for Android IPCs. This can
+be useful to test internal or restricted IPCs in specific cases/scenarios. See
+the <a href="https://github.com/iSECPartners/Android-KillPermAndSigChecks">project page</a>.</p>
+
+<h4>Android-OpenDebug</h4>
+
+<p>This extension makes all applications running on the device debuggable; once
+installed, any application will accept a debugger to attach to them. We
+originally wrote a different version that hooked on the
+android.content.pm.PackageParser class; however, MWR released a new technique
+last week involving a faster way to do it, which is what this Cydia Extension
+now uses. See the <a href="https://github.com/iSECPartners/Android-OpenDebug">project page</a>.</p>
+
+</div>
+
+
+<!-- Pagination links - http://jekyllrb.com/docs/pagination/ -->
+
+<div class="pagination">
+  
+    <a href="/index.html">&laquo; Prev</a>
+  
+
+  
+    
+      <a href="/index.html">1</a>
+    
+  
+    
+      <em>2</em>
+    
+  
+    
+      <a href="/page3">3</a>
+    
+  
+    
+      <a href="/page4">4</a>
+    
+  
+    
+      <a href="/page5">5</a>
+    
+  
+    
+      <a href="/page6">6</a>
+    
+  
+
+  
+    <a href="/page3">Next &raquo;</a>
+  
+</div>
+
+
+            </section>
+
+
+            <footer style="clear: both;">
+               <div> iSEC Partners 2014 -
+                     <a href="https://github.com/isecpartners/">iSEC on GitHub</a> -
+                     <a href="https://www.isecpartners.com/about/careers.aspx">Join us!</a>
+               </div>
+            </footer>
+         </div>
+      </div>
+      <!-- /container -->
+   </body>
+</html>

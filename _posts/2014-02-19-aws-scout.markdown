@@ -1,0 +1,38 @@
+---
+layout: post
+title:  "AWS environment security assessment with Scout2"
+date:   2014-02-19 07:51:00
+post_author: Loïc Simon
+categories: tools AWS
+---
+
+
+Security engineers at iSEC Partners are regularly involved in projects that
+require assessing the security of an Amazon Web Services (AWS) environment.
+Thoroughly reviewing AWS configuration requires poring through dozens to
+hundreds of pages in the AWS console, depending on the environment's size. In
+2012, iSEC Partners released AWS Scout to help AWS administrators assess their
+environment's security posture. Unfortunately, APIs have changed since then,
+and the tool wasn't written in a particularly maintainable fashion.
+
+### AWS Scout2
+
+iSEC Partners developed a new, more comprehensive, version of AWS Scout in order
+to address its need for an AWS configuration review tool. AWS Scout2 is an
+open-source application written in Python that connects to the AWS API and
+downloads configuration data for the following AWS services:
+
+* Identity and Access Management (IAM)
+* Elastic Compute Cloud (EC2)
+* Simple Storage Service (S3)
+
+The information gathered is then rendered in an offline HTML report. In
+addition to AWS configuration, this HTML report displays a number of security
+risks.
+
+### Project page
+
+iSEC Partners is pleased to release AWS Scout2 to the security community. See
+the Github repository page for full details on how to download and use the tool:
+
+[https://github.com/iSECPartners/Scout2](https://github.com/iSECPartners/Scout2)

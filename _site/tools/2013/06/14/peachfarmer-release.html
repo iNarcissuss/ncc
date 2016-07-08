@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Tool Release: PeachFarmer</title>
+      <meta name="viewport" content="width=device-width">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/css/syntax.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/css/main.css">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-47756501-1', 'isecpartners.github.io');
+        ga('send', 'pageview');
+
+      </script>
+   </head>
+   <body>
+      <div id="container">
+         <div class="inner">
+
+               <header>
+               <img src="/images/iseclogo.png">
+               <h2 class="title">iSEC Research Labs</h2>
+               <div id="navbar">
+               <a class="extra" href="/">Home</a> |
+               <a class="extra" href="/blog">Archives</a> |
+               <a class="extra" href="/tools">Tools</a> |
+               <a class="extra" href="/research">Research</a>
+               </div>
+              </header>
+
+            <section id="/tools/2013/06/14/peachfarmer-release" class="main_content">
+               <!-- Blog post-->
+<div>
+	<h2>Tool Release: PeachFarmer</h2>
+    <h6>14 Jun 2013 - Michael Lynch</h6>
+</div>
+
+<div lang="en" class="post">
+<h3>Cloud-based Fuzzing with Peach</h3>
+
+<p>Several of the consultants here at iSEC perform fuzz testing using the <a href="http://www.peachfuzzer.com/">Peach fuzzing framework</a>. One of Peach&#39;s strengths is that it allows the user to parallelize a fuzzing job between multiple machines, making Peach a great way to perform cloud-based fuzzing. The drawback of using Peach in the cloud is that each Peach instance generates a large number of log files and crash dumps. For the user to analyze their results effectively, they must aggregate all of these logs manually. With a large number of fuzzing instances, this can become a cumbersome task.</p>
+
+<h3>PeachFarmer</h3>
+
+<p>To solve this problem, we created PeachFarmer. PeachFarmer runs as an agent on each Peach cloud instance. The user can query the fuzzing progress via the PeachFarmer client, which collects all of Peach&#39;s logs and crash dumps from each instance in the cloud. The client then downloads and aggregates these files to a central location on the user&#39;s local machine. PeachFarmer only downloads the data that has changed since the last successful check, so there&#39;s no redundant transfer of data files. In our own usage, PeachFarmer has made management of cloud fuzzing instances much faster and easier.</p>
+
+<h3>Project Page</h3>
+
+<p>Today we are excited to release PeachFarmer to the security community. Check out the <a href="https://github.com/iSECPartners/PeachFarmer">project page on Github</a>, try it out for yourself, and tell us what you think.</p>
+
+<p>Happy fuzzing!</p>
+
+</div>
+
+
+<!-- Links to previous/next posts -->
+<div class="postswitch">
+
+
+  <h6 class="navpost "><span class="right"> &raquo; </span> <a class="navright" href="/crypto/2013/04/29/authenticated-encryption.html" title="Previous Post: An Introduction to Authenticated Encryption">An Introduction to Authenticated Encryption</a></h6>
+
+
+
+
+  <h6 class="navpost"> <span>&laquo;</span> <a class="navleft"  href="/blackhat/2013/08/06/bluetooth-smart.html" title="Next Post: Black Hat 2013 - Bluetooth Smart Presentation Available">Black Hat 2013 - Bluetooth Smart Presentation Available</a></h6>
+
+
+</div>
+
+
+            </section>
+
+
+            <footer style="clear: both;">
+               <div> iSEC Partners 2014 -
+                     <a href="https://github.com/isecpartners/">iSEC on GitHub</a> -
+                     <a href="https://www.isecpartners.com/about/careers.aspx">Join us!</a>
+               </div>
+            </footer>
+         </div>
+      </div>
+      <!-- /container -->
+   </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>iOS 7 tool updates</title>
+      <meta name="viewport" content="width=device-width">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/css/syntax.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/css/main.css">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-47756501-1', 'isecpartners.github.io');
+        ga('send', 'pageview');
+
+      </script>
+   </head>
+   <body>
+      <div id="container">
+         <div class="inner">
+
+               <header>
+               <img src="/images/iseclogo.png">
+               <h2 class="title">iSEC Research Labs</h2>
+               <div id="navbar">
+               <a class="extra" href="/">Home</a> |
+               <a class="extra" href="/blog">Archives</a> |
+               <a class="extra" href="/tools">Tools</a> |
+               <a class="extra" href="/research">Research</a>
+               </div>
+              </header>
+
+            <section id="/ios/introspy/tools/2014/01/02/ios7-tool-update" class="main_content">
+               <!-- Blog post-->
+<div>
+	<h2>iOS 7 tool updates</h2>
+    <h6>02 Jan 2014 - Alban Diquet</h6>
+</div>
+
+<div lang="en" class="post">
+<p>With the availability of the evasi0n7 jailbreak and the subsequent release two
+days ago of <a href="http://www.cydiasubstrate.com/">Cydia Substrate</a> with support for iOS 7 and ARM64, a
+full-blown iOS 7 penetration testing environment can now be setup. To this
+extent, we&#39;ve updated our <a href="https://github.com/iSECPartners/">publicly available</a> iOS tools for blackbox
+testing in order to add support for iOS 7 and ARM64. We just released the two
+following updates:</p>
+
+<ul>
+<li><a href="https://github.com/iSECPartners/ios-ssl-kill-switch/releases">iOS SSL Kill Switch v0.5</a>, our tool to disable SSL certificate
+verification/pinning.</li>
+<li><a href="https://github.com/iSECPartners/Introspy-iOS/releases">Introspy-iOS v0.4</a>, our iOS Apps security profiler.</li>
+</ul>
+
+<p>The pre-compiled packages for these tools now contain both an armv7 and an
+arm64 slice, which means that they will work on 64 bits iOS Apps for devices
+with an A7 chip (such as the iPhone 5s and the iPad Air).</p>
+
+<p>Both tools were successfully tested on an iPhone 5s running iOS 7.0.4:</p>
+
+<p><center> <img src="/images/introspy-ios7.png" alt="screenshot"> </center></p>
+
+<h3>Sandbox changes in iOS 7</h3>
+
+<p>While testing Introspy-iOS on iOS 7, I ran into issues with the <em>sandboxd</em>
+daemon denying write access to specific files the tool was trying to create.
+Interestingly enough, it seems like the Seatbelt profiles deployed on iOS 7
+have been updated, compared to iOS 6. Specifically:</p>
+
+<ul>
+<li>AppStore Apps can no longer write to the root folder of their container
+directory, for example
+<em>/var/mobile/Applications/3152B928-D771-424C-AE39-F79EC4A79EC5/</em></li>
+<li>System Apps can no longer write to <em>/var/mobile/</em></li>
+</ul>
+
+<p>Because of these changes, I had to modify the locations where Introspy-iOS
+stores its files, to the following paths:</p>
+
+<ul>
+<li><em>[App Container]/Library/</em> for AppStore Apps.</li>
+<li><em>/var/mobile/Library/Preferences/</em> for System Apps.</li>
+</ul>
+
+<p>It is unclear why the Seatbelt profiles were changed, although the ability to
+write to these locations was not actually needed by Apps. More information
+regarding the Seatbelt profiles used for various iOS Apps is available on the
+<a href="http://iphonedevwiki.net/index.php/Seatbelt">iphonedev wiki</a>.</p>
+
+</div>
+
+
+<!-- Links to previous/next posts -->
+<div class="postswitch">
+
+
+  <h6 class="navpost "><span class="right"> &raquo; </span> <a class="navright" href="/ssl/tools/2013/12/30/sslyze-0_8.html" title="Previous Post: SSLyze v0.8 released">SSLyze v0.8 released</a></h6>
+
+
+
+
+  <h6 class="navpost"> <span>&laquo;</span> <a class="navleft"  href="/tools/fuzzing/2014/01/07/rtsp-fuzzer.html" title="Next Post: Announcing the Release of RtspFuzzer">Announcing the Release of RtspFuzzer</a></h6>
+
+
+</div>
+
+
+            </section>
+
+
+            <footer style="clear: both;">
+               <div> iSEC Partners 2014 -
+                     <a href="https://github.com/isecpartners/">iSEC on GitHub</a> -
+                     <a href="https://www.isecpartners.com/about/careers.aspx">Join us!</a>
+               </div>
+            </footer>
+         </div>
+      </div>
+      <!-- /container -->
+   </body>
+</html>

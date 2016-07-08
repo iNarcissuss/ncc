@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Amazon AWS Sig V4 Burp Plugin</title>
+      <meta name="viewport" content="width=device-width">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/css/syntax.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/css/main.css">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-47756501-1', 'isecpartners.github.io');
+        ga('send', 'pageview');
+
+      </script>
+   </head>
+   <body>
+      <div id="container">
+         <div class="inner">
+
+               <header>
+               <img src="/images/iseclogo.png">
+               <h2 class="title">iSEC Research Labs</h2>
+               <div id="navbar">
+               <a class="extra" href="/">Home</a> |
+               <a class="extra" href="/blog">Archives</a> |
+               <a class="extra" href="/tools">Tools</a> |
+               <a class="extra" href="/research">Research</a>
+               </div>
+              </header>
+
+            <section id="" class="main_content">
+               <!-- Blog post-->
+<div>
+	<h2>Amazon AWS Sig V4 Burp Plugin</h2>
+    <h6>10 Dec 2013 - Mike Warner</h6>
+</div>
+
+<div lang="en" class="post">
+<h3>Amazon AWS Sig V4 Burp Plugin</h3>
+
+<p>Testing Amazon Web Service APIs can be a frustrating experience for any
+security researcher; each AWS web request is digitally signed with Amazon’s
+publicly documented signing algorithm, making tampering with requests rather
+painful. This signing algorithm has been implemented as a Burp Proxy plugin
+making it easy to modify requests. Now any signed HTTP header and POST message
+can be modified without the need to manually calculate the signature, allowing
+time to be spent on testing rather than re-implementing a signing algorithm.</p>
+
+<h4>Benefits</h4>
+
+<ul>
+<li>Each request is tested to determine if the signature is needed or not</li>
+<li>Change AWS credentials without having to reload the plugin</li>
+</ul>
+
+<p>The <a href="https://github.com/iSECPartners/AWS-SigV4-Signer">Burp Plugin</a> is hosted
+on GitHub.</p>
+
+</div>
+
+
+<!-- Links to previous/next posts -->
+<div class="postswitch">
+
+
+
+
+
+
+</div>
+
+
+            </section>
+
+
+            <footer style="clear: both;">
+               <div> iSEC Partners 2014 -
+                     <a href="https://github.com/isecpartners/">iSEC on GitHub</a> -
+                     <a href="https://www.isecpartners.com/about/careers.aspx">Join us!</a>
+               </div>
+            </footer>
+         </div>
+      </div>
+      <!-- /container -->
+   </body>
+</html>

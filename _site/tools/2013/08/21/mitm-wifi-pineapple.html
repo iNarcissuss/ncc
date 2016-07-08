@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Man-in-the-Middling Non-Proxy Aware Wi-Fi Devices with a Pineapple</title>
+      <meta name="viewport" content="width=device-width">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/css/syntax.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/css/main.css">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-47756501-1', 'isecpartners.github.io');
+        ga('send', 'pageview');
+
+      </script>
+   </head>
+   <body>
+      <div id="container">
+         <div class="inner">
+
+               <header>
+               <img src="/images/iseclogo.png">
+               <h2 class="title">iSEC Research Labs</h2>
+               <div id="navbar">
+               <a class="extra" href="/">Home</a> |
+               <a class="extra" href="/blog">Archives</a> |
+               <a class="extra" href="/tools">Tools</a> |
+               <a class="extra" href="/research">Research</a>
+               </div>
+              </header>
+
+            <section id="/tools/2013/08/21/mitm-wifi-pineapple" class="main_content">
+               <!-- Blog post-->
+<div>
+	<h2>Man-in-the-Middling Non-Proxy Aware Wi-Fi Devices with a Pineapple</h2>
+    <h6>21 Aug 2013 - Anson Gomes</h6>
+</div>
+
+<div lang="en" class="post">
+<p>Every security professional has to Man-in-the-Middle (MitM) network
+communication at some point in their career. This can be challenging in
+situations where the device or application does not allow the user to specify
+a proxy server. The only way to monitor this sort of communication is to
+intercept the traffic flowing through the device&#39;s Internet connection, most
+commonly a wireless Access Point (AP). Getting this setup working correctly
+can be difficult, as it depends on a number of factors, including having the
+right hardware and properly configured software. There are various blog posts
+which demonstrate how to create an AP and set up a DHCP server, but few go
+into the nitty-gritty details of the entire process for middling network
+communication.</p>
+
+<p>This blog article details the steps I took to create this setup in order to
+perform MiTM analysis on a custom black-box device. For my setup, I used
+Ubuntu and the <a href="http://hakshop.myshopify.com/products/wifi-pineapple">Wi-Fi
+Pineapple</a>.  </p>
+
+<h3>What is the Wi-Fi Pineapple?</h3>
+
+<p>You can think of the Pineapple as a highly configurable router. It sets up a
+wireless AP and a DHCP server. My reasons for choosing the Pineapple were for
+its compatible hardware and easy to use software configurations; both of which
+are necessary for setting up a working AP. The Pineapple is built using the
+<a href="http://www.data-alliance.net/servlet/-strse-640/Alfa-Hornet-dsh-UB-Atheros-AR9331/Detail">Atheros
+AR9331</a>
+chipset supporting <a href="https://help.ubuntu.com/community/WifiDocs/MasterMode">Master
+mode</a> and uses
+<a href="https://openwrt.org/">OpenWRT</a> for setting up the 802.11 b/g/n wireless
+router. Out of the box, the Pineapple has a number of tools which help in
+wireless security testing and penetrations tests such as
+<a href="http://www.wirelessdefence.org/Contents/KARMAMain.htm">Karma</a>,
+<a href="http://linux.die.net/man/8/dnsspoof">DNSSpoof</a>, and
+<a href="http://linux.die.net/man/8/urlsnarf">URLSnarf</a> among others. All of these are
+controlled via a web application which is accessible on the Pineapple. These
+tools and features can also be accessed via SSH. The current version is Mark
+IV and is sold for only $99.99, so the Pineapple is a cheap and easy to use
+device for wireless assessments.</p>
+
+<h3>How to Man-in-the-Middle Communication using a Pineapple</h3>
+
+<p>Now that you know what the Pineapple is, we&#39;ll look at how to use it to MiTM
+network traffic.</p>
+
+<p>The diagram below represents my setup to MitM network traffic between a device
+and a server on the Internet which can be understood as:</p>
+
+<ol>
+<li>The testing laptop is connected to the Internet via the Ethernet port.</li>
+<li>The testing laptop is also connected to the Pineapple via the Wi-Fi
+adapter.</li>
+<li>The target device is configured to talk to the Pineapple.</li>
+<li>All monitoring and interception happens on the testing laptop.</li>
+</ol>
+
+<p><img src="../../../../images/anson/pineapple_set_up_617x206.jpg" alt="Pineapple setup"></p>
+
+<p>Note: You can modify this setup to suit your needs, e.g. connect the Pineapple
+to the laptop via the Ethernet port and connect the laptop to the Internet via
+Wi-Fi.</p>
+
+<h3>Step 1: Setting up the AP and DHCP service</h3>
+
+<p>Since the Pineapple sets up an AP and a DHCP server out of the box, our task
+of setting up a working AP is handled by the Pineapple itself. The default AP
+created by the Pineapple is called <strong>pineapple 19:3e</strong>. It also has an IP
+address of 172.16.42.1 and leases IP addresses in the range of 172.16.42.0/25.
+The adjacent screenshot of an iPad (used for demonstration) connected to the
+Pineapple depicts this information. You can change these settings by SSHing
+into the Pineapple and by modifying its configurations.</p>
+
+<p><img src="../../../../images/anson/network_settings.jpg" alt="Network Settings"></p>
+
+<p>You can now connect a device to the AP created by the Pineapple; however, the
+device will not be able to connect to the Internet because we haven&#39;t
+connected the Pineapple to the Internet. To do that, we&#39;ll need to set up
+Internet Connection Sharing (ICS) on our laptop by forwarding all traffic from
+the Pineapple&#39;s Wi-Fi adapter to its Ethernet adapter (or vice versa depending
+on your setup). Then, we&#39;ll be able to monitor and intercept the traffic
+flowing through the Pineapple.</p>
+
+<h3>Step 2: Configuring the Pineapple to connect to the Internet (Setting up ICS)</h3>
+
+<p>We can set up ICS with a bit of networking and
+<a href="http://en.wikipedia.org/wiki/Iptables">IPTables</a> magic. Enabling ICS
+between the two physical interfaces (i.e. Ethernet and Wi-Fi adapter on the
+tester&#39;s laptop) involves the following steps:</p>
+
+<ol>
+<li><p>Enabling IP Forwarding.</p></li>
+<li><p>Creating a route between the interfaces for forwarding the network traffic.</p></li>
+<li><p>Routing network traffic between the interfaces through a proxy via IPTables.</p></li>
+</ol>
+
+<p>This task of setting up ICS is again made easy by the Pineapple. There is a
+script called <a href="http://wifipineapple.com/mk4/scripts/wp4.sh">wp4.sh</a> available
+from the Pineapple website which sets up the ICS between the interfaces. A
+full list of commands is available towards the end of the article which
+includes the commands from the wp4.sh script in addition to a few others to
+MiTM network traffic. For the wp4.sh script to execute successfully, you will
+need some knowledge of the network configuration of your system. You can get
+this information by running ifconfig on the laptop. Download the script from
+the website and execute it inputting the necessary configuration so that it
+executes successfully as seen in the screenshot below.</p>
+
+<p><img src="../../../../images/anson/successful_execution_of_the_wp4.jpg" alt="Executing wp4.sh"></p>
+
+<p>Once you have ICS configured, the device connected to the Pineapple will be
+able to access the Internet. As mentioned earlier, the Pineapple comes with a
+plethora of tools which can be managed via a web interface. This web interface
+also lists all the devices that are connected to it and also has a logging
+functionality which can be really useful.</p>
+
+<p><img src="../../../../images/anson/devices.jpg" alt="Device list"></p>
+
+<p>You can also monitor the traffic flowing through the Pineapple using packet
+capture software such as <a href="http://www.wireshark.org">Wireshark</a> by sniffing on
+the Wi-Fi adapter of the laptop.</p>
+
+<p><img src="../../../../images/anson/monitoring.jpg" alt="Monitoring with Wireshark"></p>
+
+<p>Now that you can monitor the network traffic flowing through the Pineapple,
+let&#39;s look at how to send this traffic to a proxy server so that we can
+actively modify the data flowing across the wire.</p>
+
+<h3>Step 3: Routing network traffic through a proxy server via IPTables</h3>
+
+<p>If we were using a device such as an iPad for MitM communication this would
+have been easy; just add a proxy server to the network settings of the device
+and you would be in the middle of the network communication. However, since we
+cannot modify or set the proxy settings on a non-proxy aware device our task
+is a little more complicated. We can use IPTables rules to MitM the network
+communication flowing from such a device through the Pineapple. The following
+IPTables rules will redirect all traffic for ports 80 and 443 to port 8080.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
+
+iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 80 -j REDIRECT --to-ports 8080
+
+iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 8080
+
+iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 443 -j REDIRECT --to-ports 8080
+</code></pre></div>
+<p>We can now have a proxy server running on the loopback (127.0.0.1) interface
+of the laptop and intercept traffic on port 8080. Using this setup we can make
+changes to the network traffic on the fly as shown in the screenshot below
+(where the iPad is used just for demonstration):</p>
+
+<p><img src="../../../../images/anson/burp.jpg" alt="Burp screenshot"></p>
+
+<p>Note:Intercepting SSL traffic from the embedded device could be a little
+tricky and difficult based on the security configuration of the device. You
+will have to install a SSL certificate (from the proxy server) into the
+trusted root store of the device. This procedure will be device specific.</p>
+
+<p>The example above redirects HTTP.  If you&#39;re not sure what the device is
+talking, using the packet capture software to determine the ports, and
+redirect the correct ones.  Make sure that the proxy server can handle the
+protocol used by the device; <a href="http://portswigger.net/burp/proxy.html">Burp</a> is
+an HTTP proxy whereas
+<a href="http://www.contextis.com/research/tools/canape/">Canape</a>,
+<a href="http://intrepidusgroup.com/insight/mallory/">Mallory</a> and
+<a href="https://github.com/iSECPartners/tcpprox">tcpprox</a> can intercept raw TCP
+communication.</p>
+
+<h3>Conclusion</h3>
+
+<p>It&#39;s much easier to MitM the network communication of opaque devices than it
+may seem.</p>
+
+<p>The complete list of commands to MitM network traffic using the Pineapple is
+listed below. These commands have been taken from the wp4.sh script of the
+Pineapple and include the additional IPTables rules for proxying the network
+communication on ports 80 and 443 by redirecting it to port 8080. Replace the
+variables with your setup&#39;s configuration data.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">#Setup the Configurations
+
+pineapplenetmask=255.255.255.0 # Default netmask for /24 network
+
+pineapplenet=172.16.42.0/24 # Pineapple network. Default is 172.16.42.0/24
+
+pineapplelan=XXX    # Interface of Ethernet cable connected to the laptop
+
+pineapplewan=XXX    # Interface of the Pineapple connected to the laptop
+
+pineapplegw=XXX     # The IP of the Internet Gateway
+
+pineapplehostip=XXX #IP Address of host computer
+
+pineappleip=172.16.42.1 # IP Address of the pineapple
+
+
+
+#Bring up Ethernet Interface directly connected to Pineapple
+
+ifconfig $pineapplelan $pineapplehostip netmask $pineapplenetmask up
+
+
+
+#Enable IP Forwarding
+
+echo &#39;1&#39; &gt; /proc/sys/net/ipv4/ip_forward
+
+
+
+#Clear the IPTables Chains and Rules
+
+iptables -X
+
+iptables -F
+
+
+
+#Setup IP Forwarding
+
+iptables -A FORWARD -i $pineapplewan -o $pineapplelan -s $pineapplenet -m state --state NEW -j ACCEPT
+
+iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+iptables -A POSTROUTING -t nat -j MASQUERADE
+
+
+
+#Remove the Default Route
+
+route del default
+
+
+
+#Add a new Default Gateway
+
+route add default gw $pineapplegw $pineapplewan
+
+
+
+#Modify the IPTables to enable proxying
+
+iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
+
+iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 80 -j REDIRECT --to-ports 8080
+
+iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 8080
+
+iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 443 -j REDIRECT --to-ports 8080
+</code></pre></div>
+<p>Troy Hunt has a nice <a href="http://www.troyhunt.com/2013/04/the-beginners-guide-to-breaking-website.html">blog
+article</a>
+on his site which shows you how to MitM network communication using the
+Pineapple and Windows.</p>
+
+<p>Now that you know how to MitM network traffic, Happy Hacking!</p>
+
+<p>P.S.: If you want to learn more about testing back-box embedded devices come
+watch our <a href="http://www.blackhat.com/us-13/briefings.html#Chittenden">Turbo
+Talk</a> at Black Hat
+where Jonathan Chittenden and I will be talking about how we went about
+testing <a href="http://www.supermechanical.com/">Twine</a>. The presentation will give
+insight into performing black-box analysis of an embedded system - for fun,
+for research, or for profit. You will have a better understanding of where
+things can go wrong, how to fix them and how to proceed from there. Further,
+individuals charged with designing and building similar devices will
+understand how to design such devices with better security. The presentation
+will contain information that will be beneficial to designers, builders,
+breakers, defenders and users alike.</p>
+
+</div>
+
+
+<!-- Links to previous/next posts -->
+<div class="postswitch">
+
+
+  <h6 class="navpost "><span class="right"> &raquo; </span> <a class="navright" href="/ios/tools/2013/08/21/introspy-release.html" title="Previous Post: Blackbox iOS App Analysis with Introspy">Blackbox iOS App Analysis with Introspy</a></h6>
+
+
+
+
+  <h6 class="navpost"> <span>&laquo;</span> <a class="navleft"  href="/tools/2013/09/05/dnsRedir-release.html" title="Next Post: Redirecting traffic with dnsRedir.py">Redirecting traffic with dnsRedir.py</a></h6>
+
+
+</div>
+
+
+            </section>
+
+
+            <footer style="clear: both;">
+               <div> iSEC Partners 2014 -
+                     <a href="https://github.com/isecpartners/">iSEC on GitHub</a> -
+                     <a href="https://www.isecpartners.com/about/careers.aspx">Join us!</a>
+               </div>
+            </footer>
+         </div>
+      </div>
+      <!-- /container -->
+   </body>
+</html>

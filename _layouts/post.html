@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<!-- Blog post-->
+<div>
+	<h2>{{ page.title }}</h2>
+    <h6>{{ page.date | date_to_string }} - {{ page.post_author }}</h6>
+</div>
+
+<div lang="en" class="post">
+{{ content }}
+</div>
+
+
+<!-- Links to previous/next posts -->
+<div class="postswitch">
+{% assign previous = page.previous %}
+{% if previous.url %}
+  <h6 class="navpost "><span class="right"> &raquo; </span> <a class="navright" href="{{previous.url}}" title="Previous Post: {{previous.title}}">{{previous.title}}</a></h6>
+{% endif %}
+
+{% assign next = page.next %}
+{% if next.url %}
+  <h6 class="navpost"> <span>&laquo;</span> <a class="navleft"  href="{{next.url}}" title="Next Post: {{next.title}}">{{next.title}}</a></h6>
+{% endif %}
+
+</div>
+

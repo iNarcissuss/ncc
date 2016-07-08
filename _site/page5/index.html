@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>iSEC Research Labs</title>
+      <meta name="viewport" content="width=device-width">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/css/syntax.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/css/main.css">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-47756501-1', 'isecpartners.github.io');
+        ga('send', 'pageview');
+
+      </script>
+   </head>
+   <body>
+      <div id="container">
+         <div class="inner">
+
+               <header>
+               <img src="/images/iseclogo.png">
+               <h2 class="title">iSEC Research Labs</h2>
+               <div id="navbar">
+               <a class="extra" href="/">Home</a> |
+               <a class="extra" href="/blog">Archives</a> |
+               <a class="extra" href="/tools">Tools</a> |
+               <a class="extra" href="/research">Research</a>
+               </div>
+              </header>
+
+            <section id="" class="main_content">
+               <!-- This loops through the paginated posts -->
+
+<div>
+    <h2 class="posttitle">SSLyze v0.7 Released</h2>
+    <h6>14 Aug 2013 - Alban Diquet</h6>
+</div>
+
+  <div lang="en" class="postmainpage">
+
+<p>A new version of <a href="https://github.com/iSECPartners/sslyze">SSLyze</a> is now available. SSLyze is a Python tool that can analyze the SSL configuration of a server by connecting to it.</p>
+
+<h3>Changelog</h3>
+
+<ul>
+<li>Complete rewrite of the OpenSSL wrapper as a <a href="https://github.com/nabla-c0d3/nassl">C extension</a>
+
+<ul>
+<li>SSLyze is now statically linked with the latest version of OpenSSL instead of using the system&#39;s (potentially outdated/broken) OpenSSL library</li>
+<li>All of SSLyze&#39;s features are now available on all supported platforms (including SSL 2.0, TLS 1.1 and TLS 1.2)</li>
+<li>Scans are slightly faster</li>
+<li>Python 2.6 is no longer supported</li>
+</ul></li>
+<li>Support for StartTLS FTP, POP, IMAP, LDAP and &quot;auto&quot;. See --starttls</li>
+<li>Support for OCSP Stapling. See --certinfo</li>
+<li>Other various improvements that results in SSLyze being more stable/robust</li>
+</ul>
+
+<h3>Packages</h3>
+
+<p>SSLyze requires Python 2.7; the supported platforms are Windows 7 32/64 bits, 
+Linux 32/64 bits and OS X 64 bits.
+SSLyze is statically linked with OpenSSL 1.0.1e. For this reason, the easiest 
+way to run SSLyze is to download one the following pre-compiled packages:</p>
+
+<h4>Linux</h4>
+
+<p>The following packages were tested on Debian 7 and Ubuntu 13.04.</p>
+
+<ul>
+<li><a href="https://www.dropbox.com/s/u6h4u50daejuz5q/sslyze-0_7-linux32.zip?dl=1">Package for Python 32 bits</a></li>
+<li><a href="https://www.dropbox.com/s/zf0e8oolkpkcuhu/sslyze-0_7-linux64.zip?dl=1">Package for Python 64 bits</a></li>
+</ul>
+
+<h4>OS X Mountain Lion</h4>
+
+<ul>
+<li><a href="https://www.dropbox.com/s/v4vb2q7h5cb3tl3/sslyze-0_7-osx64.zip?dl=1">Package for Python 64 bits</a></li>
+</ul>
+
+<h4>Windows 7</h4>
+
+<ul>
+<li><a href="https://www.dropbox.com/s/wmmgny3cz3tsido/sslyze-0_7-win32.zip?dl=1">Package for Python 32 bits</a></li>
+<li><a href="https://www.dropbox.com/s/xt526dgsyz1utid/sslyze-0_7-win64.zip?dl=1">Package for Python 64 bits</a></li>
+</ul>
+
+</div>
+
+<div>
+    <h2 class="posttitle">Black Hat 2013 - Cryptopocalypse Presentation Available</h2>
+    <h6>06 Aug 2013 - iSEC Partners</h6>
+</div>
+
+  <div lang="en" class="postmainpage">
+
+<p>The slides for the <strong>Preparing for the Cryptopocalypse</strong> presentation from Black Hat 2013 are now available.</p>
+
+<p>The group presentation was given by Alex Stamos, Tom Ritter, Javed Samuel and Thomas Ptacek and looks into the latest breakthroughs in the academic crypto community.</p>
+
+<p>The paper can be downloaded <a href="https://github.com/iSECPartners/publications/blob/master/presentations/ritter_samuel_stamos_bh_2013_cryptopocalypse.pdf?raw=true">here</a>.</p>
+
+</div>
+
+<div>
+    <h2 class="posttitle">Black Hat 2013 - Bluetooth Smart Presentation Available</h2>
+    <h6>06 Aug 2013 - Mike Ryan</h6>
+</div>
+
+  <div lang="en" class="postmainpage">
+
+<p>The slides for the <strong>Bluetooth Smart</strong> presentation from Black Hat 2013 are now available.</p>
+
+<p>The presentation was given by Mike Ryan and looks into Bluetooth &quot;Smart&quot; (also known as Bluetooth Low Energy or BTLE), the latest Bluetooth spec, 4.0, used by fitness devices, locks, and recent smartphones.</p>
+
+<p>The paper can be downloaded <a href="https://github.com/iSECPartners/publications/blob/master/presentations/bluetooth_smart_good_bad_ugly_fix-mikeryan-blackhat_2013.pdf?raw=true">here</a>.</p>
+
+</div>
+
+<div>
+    <h2 class="posttitle">Tool Release: PeachFarmer</h2>
+    <h6>14 Jun 2013 - Michael Lynch</h6>
+</div>
+
+  <div lang="en" class="postmainpage">
+
+<h3>Cloud-based Fuzzing with Peach</h3>
+
+<p>Several of the consultants here at iSEC perform fuzz testing using the <a href="http://www.peachfuzzer.com/">Peach fuzzing framework</a>. One of Peach&#39;s strengths is that it allows the user to parallelize a fuzzing job between multiple machines, making Peach a great way to perform cloud-based fuzzing. The drawback of using Peach in the cloud is that each Peach instance generates a large number of log files and crash dumps. For the user to analyze their results effectively, they must aggregate all of these logs manually. With a large number of fuzzing instances, this can become a cumbersome task.</p>
+
+<h3>PeachFarmer</h3>
+
+<p>To solve this problem, we created PeachFarmer. PeachFarmer runs as an agent on each Peach cloud instance. The user can query the fuzzing progress via the PeachFarmer client, which collects all of Peach&#39;s logs and crash dumps from each instance in the cloud. The client then downloads and aggregates these files to a central location on the user&#39;s local machine. PeachFarmer only downloads the data that has changed since the last successful check, so there&#39;s no redundant transfer of data files. In our own usage, PeachFarmer has made management of cloud fuzzing instances much faster and easier.</p>
+
+<h3>Project Page</h3>
+
+<p>Today we are excited to release PeachFarmer to the security community. Check out the <a href="https://github.com/iSECPartners/PeachFarmer">project page on Github</a>, try it out for yourself, and tell us what you think.</p>
+
+<p>Happy fuzzing!</p>
+
+</div>
+
+<div>
+    <h2 class="posttitle">An Introduction to Authenticated Encryption</h2>
+    <h6>29 Apr 2013 - Shawn Fitzgerald</h6>
+</div>
+
+  
+  <div lang="en" class="post">
+
+<p>Historically, independent encryption and message authentication codes (MAC) have been used to provide message confidentiality and integrity. This has led to confusion within the user community, as there was no standard construct for combining these. The result of this has been often insecure combinations that have resulted in a number of high profile system breaks such as the use of WEP in 802.11. Over the last ten years, the cryptographic community has moved to a more formal approach to the development and specification of cryptographic algorithms and modes of operation; this has resulted in provably secure Authenticated Encryption primitives that provide both confidentiality and integrity.</p>
+
+<p>Authenticated Encryption is beginning to see deeper adoption in both security standards and implementations, yet is still not commonly understood by the security community.  In this paper, iSEC&#39;s Shawn Fitzgerald attempts to bridge the gap between academic and technical standards and non-technical overviews by presenting a systematic introduction to Authenticated Encryption and the most commonly used modes such as CCM, EAX, OCB and GCM.</p>
+
+<p>The paper can be downloaded <a href="https://github.com/iSECPartners/publications/raw/master/whitepapers/introduction_to_authenticated_encryption.pdf">here</a>.</p>
+
+</div>
+
+
+<!-- Pagination links - http://jekyllrb.com/docs/pagination/ -->
+
+<div class="pagination">
+  
+    <a href="/page4">&laquo; Prev</a>
+  
+
+  
+    
+      <a href="/index.html">1</a>
+    
+  
+    
+      <a href="/page2">2</a>
+    
+  
+    
+      <a href="/page3">3</a>
+    
+  
+    
+      <a href="/page4">4</a>
+    
+  
+    
+      <em>5</em>
+    
+  
+    
+      <a href="/page6">6</a>
+    
+  
+
+  
+    <a href="/page6">Next &raquo;</a>
+  
+</div>
+
+
+            </section>
+
+
+            <footer style="clear: both;">
+               <div> iSEC Partners 2014 -
+                     <a href="https://github.com/isecpartners/">iSEC on GitHub</a> -
+                     <a href="https://www.isecpartners.com/about/careers.aspx">Join us!</a>
+               </div>
+            </footer>
+         </div>
+      </div>
+      <!-- /container -->
+   </body>
+</html>

@@ -1,0 +1,39 @@
+---
+layout: post
+title:  "DIBF Tool Suite"
+date:   2014-04-16 12:01:05
+post_author: Nicolas Guigo
+categories: tools fuzzing
+---
+
+Introducing iSEC Partners' Windows driver testing suite. The source, binaries
+and example output are available at
+[https://github.com/iSECPartners/DIBF](https://github.com/iSECPartners/DIBF)
+under the GPLv2 license. Currently three tools are included:
+
+DIBF - Dynamic IOCTL Brute-Forcer (and fuzzers)
+
+This tool encompasses two distinct features. It guesses the IOCTL values that
+the driver accepts, and also their valid size limitations, and stores the
+results are in a file for future reuse. The second feature is composed of 3
+dumb fuzzers: a pure random fuzzer, a sliding DWORD fuzzer and a fully
+asynchronous fuzzer. Any combination of the 3 fuzzers can be run sequentially,
+and numerous options can be set from the command line, including time limits
+for each fuzzer run, the maximum number of failed requests in a row
+(indicating further fuzzing might be pointless due to lack permission for
+instance) and the verbosity level. Any fuzzer run can be stopped cleanly with
+ctrl-c, and upon completion cumulative statistics are displayed. See the
+README and usage for more information on all options and features.
+
+IOSEND - sending single IOCTL to a driver
+
+This is a tool intended for proofing vulnerabilities and is meant to be used
+in conjunction with a hex editor. Once the request of interest has been
+crafted in the editor, this utility will send it to the driver using command
+line parameters. The response gets sent to stdout.
+
+IOCODE - simple encoding/decoding utility for IO codes
+
+This very simple tool encodes and decodes windows IOCTL control codes. It
+provides a user-friendly way to deal with IO encoding of device types,
+function number, transfer method and access type.

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>SSL pinning bypass and other Android tools</title>
+      <meta name="viewport" content="width=device-width">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/css/syntax.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/css/main.css">
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-47756501-1', 'isecpartners.github.io');
+        ga('send', 'pageview');
+
+      </script>
+   </head>
+   <body>
+      <div id="container">
+         <div class="inner">
+
+               <header>
+               <img src="/images/iseclogo.png">
+               <h2 class="title">iSEC Research Labs</h2>
+               <div id="navbar">
+               <a class="extra" href="/">Home</a> |
+               <a class="extra" href="/blog">Archives</a> |
+               <a class="extra" href="/tools">Tools</a> |
+               <a class="extra" href="/research">Research</a>
+               </div>
+              </header>
+
+            <section id="/android/2013/12/13/android-tools" class="main_content">
+               <!-- Blog post-->
+<div>
+	<h2>SSL pinning bypass and other Android tools</h2>
+    <h6>13 Dec 2013 - Marc Blanchou</h6>
+</div>
+
+<div lang="en" class="post">
+<p>iSEC is releasing several <a href="http://www.cydiasubstrate.com/">Cydia Substrate</a> extensions to
+facilitate the black box testing of Android applications:</p>
+
+<h4>Android-SSL-TrustKiller</h4>
+
+<p>This tool hooks various methods in order to disable SSL certificate pinning,
+by forcing the Android application to accept any SSL certificate. Once
+installed, it works across all applications on a device. See the <a href="https://github.com/iSECPartners/Android-SSL-TrustKiller">project
+page</a>.</p>
+
+<h4>Android-KillPermAndSigChecks</h4>
+
+<p>This tool disables signature and permission checks for Android IPCs. This can
+be useful to test internal or restricted IPCs in specific cases/scenarios. See
+the <a href="https://github.com/iSECPartners/Android-KillPermAndSigChecks">project page</a>.</p>
+
+<h4>Android-OpenDebug</h4>
+
+<p>This extension makes all applications running on the device debuggable; once
+installed, any application will accept a debugger to attach to them. We
+originally wrote a different version that hooked on the
+android.content.pm.PackageParser class; however, MWR released a new technique
+last week involving a faster way to do it, which is what this Cydia Extension
+now uses. See the <a href="https://github.com/iSECPartners/Android-OpenDebug">project page</a>.</p>
+
+</div>
+
+
+<!-- Links to previous/next posts -->
+<div class="postswitch">
+
+
+  <h6 class="navpost "><span class="right"> &raquo; </span> <a class="navright" href="/android/2013/12/13/Instrospy-Android.html" title="Previous Post: Blackbox Android App Analysis with Introspy">Blackbox Android App Analysis with Introspy</a></h6>
+
+
+
+
+  <h6 class="navpost"> <span>&laquo;</span> <a class="navleft"  href="/whitepapers/2013/12/17/Login-Service-Security.html" title="Next Post: Login Service Security">Login Service Security</a></h6>
+
+
+</div>
+
+
+            </section>
+
+
+            <footer style="clear: both;">
+               <div> iSEC Partners 2014 -
+                     <a href="https://github.com/isecpartners/">iSEC on GitHub</a> -
+                     <a href="https://www.isecpartners.com/about/careers.aspx">Join us!</a>
+               </div>
+            </footer>
+         </div>
+      </div>
+      <!-- /container -->
+   </body>
+</html>

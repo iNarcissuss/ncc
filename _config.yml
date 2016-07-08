@@ -1,6 +1,8 @@
-name: iSEC Research Labs
+name: NCC Group Test Blog
 markdown: redcarpet
 pygments: true
-description: iSEC's engineers often release open-source tools, whitepapers, and research presentations as part of our work. This is where we keep them.
-url: https://isecpartners.github.io/
+description: NCC Group's engineers often release open-source tools, whitepapers, and research presentations as part of our work. This is where we keep them.
+url: https://webtest1.github.io/
 paginate: 5
+future: false
+lsi: true

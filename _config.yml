@@ -1,8 +1,9 @@
 name: NCC Group Test Blog
 markdown: redcarpet
-pygments: true
+highlighter: pygments
 description: NCC Group's engineers often release open-source tools, whitepapers, and research presentations as part of our work. This is where we keep them.
 url: https://webtest1.github.io/
 paginate: 5
 future: false
-lsi: true
+lsi: false
+gems: [jekyll-paginate]

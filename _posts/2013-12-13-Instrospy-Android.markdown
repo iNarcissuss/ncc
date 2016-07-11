@@ -3,7 +3,7 @@ layout: post
 title:  "Blackbox Android App Analysis with Introspy"
 date:   2013-12-13 13:42:42
 post_author: Marc Blanchou & Alban Diquet
-categories: android
+categories: android introspy conferences
 ---
 
 

@@ -3,7 +3,7 @@ layout: post
 title:  "Black Hat 2013 - Femtocell Presentation Slides, Videos and App"
 date:   2013-08-19 11:35:05
 post_author: Tom Ritter
-categories: femtocell blackhat
+categories: conferences
 ---
 
 

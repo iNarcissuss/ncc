@@ -3,7 +3,7 @@ layout: post
 title:  "Ruxcon 2013 - Introspy Presentation Slides"
 date:   2013-10-27 11:28:45
 post_author: Alban Diquet
-categories: ios android introspy ruxcon
+categories: ios android introspy conferences
 ---
 
 _Update: Introspy for Android is now [available][android-post]; we've also

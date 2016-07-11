@@ -3,7 +3,7 @@ layout: post
 title:  "Shellshock Advisory"
 date:   2014-09-25 1:23:55
 post_author: iSEC Partners
-categories: news
+categories: advisories
 ---
 
 ## Executive Summary

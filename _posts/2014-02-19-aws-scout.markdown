@@ -3,7 +3,7 @@ layout: post
 title:  "AWS environment security assessment with Scout2"
 date:   2014-02-19 07:51:00
 post_author: Loïc Simon
-categories: tools AWS
+categories: tools aws
 ---
 
 

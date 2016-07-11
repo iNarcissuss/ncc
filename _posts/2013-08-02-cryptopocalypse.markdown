@@ -3,7 +3,7 @@ layout: post
 title:  "Black Hat 2013 - Cryptopocalypse Presentation Available"
 date:   2013-08-06 11:35:05
 post_author: iSEC Partners
-categories: blackhat crypto
+categories: conferences crypto
 ---
 
 

@@ -3,7 +3,7 @@ layout: post
 title:  "Black Hat 2013 - Bluetooth Smart Presentation Available"
 date:   2013-08-06 11:35:05
 post_author: Mike Ryan
-categories: blackhat
+categories: conferences
 ---
 
 

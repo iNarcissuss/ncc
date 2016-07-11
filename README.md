@@ -39,3 +39,30 @@ After writing your post, you can preview it if you have Jekyll installed:
 
 Once you're ready to post your article, just submit a pull request.
 
+Categories
+----------
+
+If you need to add another, please follow these specific guidelines:
+
+* Don't make a category about a specific conference or project
+* Do make a category about a specific technology
+* Do make a category about a specific project when this is the second post about it. Add the category to your first post at this time also
+* Do make the category all lowercase
+
+
+Approved/Encouraged categories:
+
+* whitepapers
+* advisories - for items related to a bug we found, or advice we are giving relating to a popular bug
+* tools
+* ssl - yes even TLS topics
+* sslyze
+* passwords
+* news - for items that don't fit anywhere else. E.G. announcing we are working with a particular project or the like, sponsoring a conference
+* ios
+* introspy
+* fuzzing
+* crypto
+* conferences - for releasing slides, tools, or otherwise references a conference you presented at or we're sponsoring.
+* android
+* aws

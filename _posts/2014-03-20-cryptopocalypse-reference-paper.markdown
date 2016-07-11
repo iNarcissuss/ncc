@@ -3,7 +3,7 @@ layout: post
 title:  "Cryptopocalypse Reference Paper"
 date:   2014-03-20 4:35:05
 post_author: Javed Samuel
-categories: blackhat crypto
+categories: conferences crypto
 ---
 
 Alex Stamos, Tom Ritter and Javed Samuel presented "Preparing for the

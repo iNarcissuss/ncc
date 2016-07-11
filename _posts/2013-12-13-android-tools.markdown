@@ -3,7 +3,7 @@ layout: post
 title:  "SSL pinning bypass and other Android tools"
 date:   2013-12-13 14:42:42
 post_author: Marc Blanchou
-categories: Android
+categories: android
 ---
 
 iSEC is releasing several [Cydia Substrate][cydia-url] extensions to

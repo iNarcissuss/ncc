@@ -3,7 +3,7 @@ layout: post
 title:  "Working with the Open Technology Fund"
 date:   2013-10-14 15:54:55
 post_author: Tom Ritter
-categories:
+categories: news
 ---
 
 

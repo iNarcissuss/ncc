@@ -3,7 +3,7 @@ layout: post
 title:  "SSLyze v 0.9 released - Heartbleed edition"
 date:   2014-04-16 10:00:00
 post_author: Alban Diquet
-categories: ssl tools
+categories: ssl tools sslyze
 ---
 
 

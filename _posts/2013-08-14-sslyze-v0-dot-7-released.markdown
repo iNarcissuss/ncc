@@ -3,7 +3,7 @@ layout: post
 title: "SSLyze v0.7 Released"
 date: 2013-08-14 11:34
 post_author: Alban Diquet
-categories: ssl tools
+categories: ssl tools sslyze
 ---
 
 A new version of [SSLyze][sslyze-gh] is now available. SSLyze is a Python tool that can analyze the SSL configuration of a server by connecting to it.

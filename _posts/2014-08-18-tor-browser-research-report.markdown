@@ -3,7 +3,7 @@ layout: post
 title:  "Tor Browser Research Report Released"
 date:   2014-08-13 11:25:55
 post_author: Tom Ritter, Andy Grant
-categories: news research
+categories: news whitepapers
 ---
 
 As part of our [work with the Open Technology

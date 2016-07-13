@@ -3,7 +3,7 @@ layout: post
 title:  "iOS Secure State Preservation"
 date:   2013-09-18 11:35:05
 post_author: Tom Daniels
-categories: ios, crypto
+categories: ios crypto
 ---
 
 iOS 6 introduced the concept of application state preservation. The purpose of

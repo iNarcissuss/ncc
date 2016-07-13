@@ -93,6 +93,12 @@ header h2 {
   color: #6d6d6d;
 }
 
+.hero{
+  font-family: 'Hero', 'Helvetica Neue', Helvetica, Arial, serif;
+}
+
+/* Top Navbar */
+
 #navbar {
   text-align:center;
   font-family: 'Hero', 'Helvetica Neue', Helvetica, Arial, serif; font-weight: 900;
@@ -110,20 +116,39 @@ header h2 {
   color: #6d6d6d;
 }
 
-.hero{
-  font-family: 'Hero', 'Helvetica Neue', Helvetica, Arial, serif;
+/* Next/Previous Links */
+
+.nextprevlink {
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  display:inline-block;
+  width:90%;
 }
 
 .postswitch {
   height:20px;
 }
 
-
 .navpost {
   margin-top:10px;
-  width: 50%;
   height:20px;
+}
+
+.navpost_right {
   float: right;
+  width: 42.5%;
+}
+.navpost_center {
+  float: right;
+  width:15%;
+  display:block;
+  overflow:hidden;
+  text-align:center;
+}
+.navpost_left {
+  float: left;
+  width: 42.5%;
 }
 
 .navpost a {
@@ -376,37 +401,42 @@ form {
 h1 {
   font-family: 'Hero', 'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 32px;
+  color: #000000;
 }
 
 h2 {
   font-family: 'Hero', 'Helvetica Neue', Helvetica, Arial, serif;
-  font-size: 22px;
-  color: #303030;
+  font-size: 1.4px;
+  font-weight: bold;
+  color: #444;
 }
 
 h3 {
   font-family: 'Hero', 'Helvetica Neue', Helvetica, Arial, serif;
-  color: #303030;
-  font-size: 18px;
-  margin-bottom: 8px;
+  font-weight: bold;
+  color: #444;
+  font-size: 1.3em;
 }
 
 h4 {
   font-family: 'Hero', 'Helvetica Neue', Helvetica, Arial, serif;
-  font-size: 16px;
-  color: #303030;
+  font-size: 1.2em;
+  color: #444;
+  font-weight: bold;
 }
 
 h5 {
   font-family: 'Hero', 'Helvetica Neue', Helvetica, Arial, serif;
-  font-size: 1em;
-  color: #303030;
+  font-size: 1.1em;
+  color: #444;
+  font-weight: bold;
 }
 
 h6 {
   font-family: 'Hero', 'Helvetica Neue', Helvetica, Arial, serif;
-  font-size: .8em;
-  color: #303030;
+  font-size: 1em;
+  color: #444;
+  font-weight: bold;
 }
 
 p {
@@ -461,6 +491,11 @@ footer {
 
 
 /* MISC */
+.post_permalink {
+  font-size: .8em;
+  float: right;
+}
+
 .clearfix:after {
   clear: both;
   content: '.';

@@ -1,13 +1,15 @@
 <div>
-    <h2 class="posttitle">{{ post.title }}</h2>
+    <h1 class="posttitle">{{ post.title }}</h1>
     <h6>{{ post.date | date_to_string }} - {{ post.post_author }}</h6>
-    <h6>{% for c in post.categories %} <a href="/categories/{{ c }}">{{ c }}</a> {% endfor %}</h6>
+    <h6>Categories: {% for c in post.categories %} <a href="/categories/{{ c }}">{{ c }}</a> {% endfor %}</h6>
 </div>
+
 {% if forloop.last %}
   {% comment %} Do not put a separating line for the last post on the page {% endcomment %}
-  <div lang="en" class="post">
+<div lang="en" class="post">
 {% else %}
-  <div lang="en" class="postmainpage">
+<div lang="en" class="postmainpage">
 {% endif %}
 {{ post.content }}
+<a class="post_permalink" href="{{ post.url }}">Permalink</a>
 </div>

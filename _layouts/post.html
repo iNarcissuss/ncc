@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% include group-by-array.html collection=site.posts field='categories' %}
+
 <!-- Blog post-->
 <div>
 	<h2>{{ page.title }}</h2>
@@ -15,24 +17,44 @@ layout: default
 
 
 
-{% for c in page.categories %}
-<div class="postswitch">
-{% assign previous = page.previous %}
-{% if previous.url %}
-  <h6 class="navpost navpost_right"><span class="right"> &raquo; </span> <a class="navright" href="{{previous.url}}" title="Previous Post: {{previous.title}}">{{previous.title}}</a></h6>
-{% endif %}
+{% comment %} ================================================================================== {% endcomment %}
+{% comment %} Next/Prev each cat using group-by-array,http://stackoverflow.com/questions/16145061/ {% endcomment %}
+{% for category in page.categories %}
+	{% assign categorynext = None %}
+	{% assign categorynext = None %}
+    {% for group_category in group_names %}
+    	{% if category == group_category %}
+			{% assign categoryposts = group_items[forloop.index0] %}
+			{% for categorypost in categoryposts %}
+				{% if categorypost.url == page.url and forloop.index0 != 0 %}
+					{% comment %} Get the 'next' by saving the previous loop value {% endcomment %}
+					{% assign categorynext = prevcategorypost %}
+				{% endif %}
+				{% if categorypost.url == page.url and forloop.index != categoryposts.size %}
+					{% comment %} Get the 'previous' by using the 1-indexed value {% endcomment %}
+					{% assign categoryprev = categoryposts[forloop.index] %}
+				{% endif %}
+				{% assign prevcategorypost = categorypost %}
+			{% endfor %}
+		{% endif %}
+	{% endfor %}
 
-{% if previous.url or next.url %}
-<h6 class="navpost navpost_center">{{ c }}</h6>
-{% endif %}
+	<div class="postswitch">
+	{% if categoryprev.url %}
+	  <h6 class="navpost navpost_right"><span class="right"> &raquo; </span> <a class="navright" href="{{categoryprev.url}}" title="Previous Post: {{categoryprev.title}}">{{categoryprev.title}}</a></h6>
+	{% endif %}
 
-{% assign next = page.next %}
-{% if next.url %}
-  <h6 class="navpost navpost_left"> <span>&laquo;</span> <a class="navleft"  href="{{next.url}}" title="Next Post: {{next.title}}">{{next.title}}</a></h6>
-{% endif %}
-</div>
+	{% if categoryprev.url or categorynext.url %}
+	<h6 class="navpost navpost_center">{{ category }}</h6>
+	{% endif %}
+
+	{% if categorynext.url %}
+	  <h6 class="navpost navpost_left"> <span>&laquo;</span> <a class="navleft"  href="{{categorynext.url}}" title="Next Post: {{categorynext.title}}">{{categorynext.title}}</a></h6>
+	{% endif %}
+	</div>
 {% endfor %}
 
+{% comment %} ================================================================================== {% endcomment %}
 <div class="postswitch">
 {% assign previous = page.previous %}
 {% if previous.url %}

@@ -3,7 +3,7 @@ layout: post
 title:  "Tool Release: You'll Never (Ever) Take Me Alive!"
 date:   2014-05-09 11:25:55
 post_author: Tom Ritter
-categories: news tools
+categories: tools
 ---
 
 [A year ago](https://isecpartners.github.io/tools/2013/03/18/yontma-release.html), we released [You'll Never Take Me Alive](https://github.com/iSECPartners/yontma) — a tool that helps protects Full Disk Encrypted Windows computers from DMA and cold boot attacks.

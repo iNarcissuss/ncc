@@ -39,6 +39,15 @@ After writing your post, you can preview it if you have Jekyll installed:
 
 Once you're ready to post your article, just submit a pull request.
 
+Post Authoring
+--------------
+
+Please abide by the following when authoring posts:
+
+* Do not use any H1 headers (in markdown, single #). Start with the H2 header (in markdown, double ##)
+* Do not separate the categories by commas
+
+
 Categories
 ----------
 
@@ -48,6 +57,7 @@ If you need to add another, please follow these specific guidelines:
 * Do make a category about a specific technology
 * Do make a category about a specific project when this is the second post about it. Add the category to your first post at this time also
 * Do make the category all lowercase
+* Do not separate the categories by commas
 
 
 Approved/Encouraged categories:

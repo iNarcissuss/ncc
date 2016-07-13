@@ -6,6 +6,7 @@ layout: default
 <div>
 	<h2>{{ page.title }}</h2>
     <h6>{{ page.date | date_to_string }} - {{ page.post_author }}</h6>
+    <h6>{% for c in page.categories %} <a href="/categories/{{ c }}">{{ c }}</a> {% endfor %}</h6>
 </div>
 
 <div lang="en" class="post">

@@ -3,20 +3,8 @@ layout: default
 title: iSEC Research Labs
 ---
 
-<!-- This loops through the paginated posts -->
 {% for post in paginator.posts %}
-<div>
-    <h2 class="posttitle">{{ post.title }}</h2>
-    <h6>{{ post.date | date_to_string }} - {{ post.post_author }}</h6>
-</div>
-{% if forloop.last %}
-  {% comment %} Do not put a separating line for the last post on the page {% endcomment %}
-  <div lang="en" class="post">
-{% else %}
-  <div lang="en" class="postmainpage">
-{% endif %}
-{{ post.content }}
-</div>
+{% include post_as_part_of_multipage.html %}
 {% endfor %}
 
 <!-- Pagination links - http://jekyllrb.com/docs/pagination/ -->

@@ -44,12 +44,16 @@ layout: default
 	  <h6 class="navpost navpost_right"><span class="right"> &raquo; </span> <a class="navright" href="{{categoryprev.url}}" title="Previous Post: {{categoryprev.title}}">{{categoryprev.title}}</a></h6>
 	{% endif %}
 
-	{% if categoryprev.url or categorynext.url %}
+	{% if categoryprev.url %}
 	<h6 class="navpost navpost_center">{{ category }}</h6>
 	{% endif %}
 
 	{% if categorynext.url %}
 	  <h6 class="navpost navpost_left"> <span>&laquo;</span> <a class="navleft"  href="{{categorynext.url}}" title="Next Post: {{categorynext.title}}">{{categorynext.title}}</a></h6>
+	{% endif %}
+
+	{% if categoryprev == None and categorynext.url %}
+	<h6 class="navpost navpost_center" style="float:left">{{ category }}</h6>
 	{% endif %}
 	</div>
 {% endfor %}
@@ -61,7 +65,7 @@ layout: default
   <h6 class="navpost navpost_right"><span class="right"> &raquo; </span> <a class="navright" href="{{previous.url}}" title="Previous Post: {{previous.title}}">{{previous.title}}</a></h6>
 {% endif %}
 
-{% if previous.url or next.url %}
+{% if previous.url %}
 <h6 class="navpost navpost_center">By Date</h6>
 {% endif %}
 
@@ -69,5 +73,10 @@ layout: default
 {% if next.url %}
   <h6 class="navpost navpost_left"> <span>&laquo;</span> <a class="navleft"  href="{{next.url}}" title="Next Post: {{next.title}}">{{next.title}}</a></h6>
 {% endif %}
+
+{% if previous == Empty and next %}
+<h6 class="navpost navpost_center" style="float:left">By Date</h6>
+{% endif %}
+
 </div>
 

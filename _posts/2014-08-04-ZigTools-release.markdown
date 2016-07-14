@@ -4,6 +4,10 @@ title:  "ZigTools: An Open Source 802.15.4 Framework"
 date:   2014-08-04 08:30:00
 post_author: Mike Warner
 categories: tools
+github_name: ZigTools
+github_link: https://github.com/iSECPartners/ZigTools
+conference_name: BH Arsenal '14
+conference_link: https://www.blackhat.com/us-14/arsenal.html#Warner
 ---
 
 ZigTools is a Python framework, which was developed to reduce the complexity in writing additional functionality in communicating with a Freakduino (a low cost Arduino based 802.15.4 platform). Features such as initializing the radio, changing channels, sniffing network traffic, sending raw data and processing that data can be written in just a few lines. This allows developers to focus on writing more complex and feature rich applications without worrying about low level communications between the radio and system.

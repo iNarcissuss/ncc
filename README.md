@@ -47,6 +47,29 @@ Please abide by the following when authoring posts:
 * Do not use any H1 headers (in markdown, single #). Start with the H2 header (in markdown, double ##)
 * Do not separate the categories by commas
 
+Specific tags may be added to enable certain sidebar behaviors. Note that Download, Github, and Conference all have singular versions for friendliness.
+
+* Download
+** download_name (for example 'Whitepaper' or 'ToolName Releases')
+** download_link
+** download_names: ["Bob", "Alice"] (for multiple links)
+** download_links: ["https://www....", "https://www...."]
+* Github
+** github_name (name of the project)
+** github_link (link to github)
+** github_names (for multiple links)
+** github_links
+* Conferences
+** conference_name (should be short and contain year  e.g. BH Arsenal '14 or BH EU '13)
+** conference_link (link to your talk on the conference page)
+** conference_names (for multiple links)
+** conference_links
+* Related
+** related: ["2014/08/13/tor-browser-research-report", "2013/10/14/open-tech-fund-report-release"] (ids of specific related blog posts)
+** Related links are _not_ symmetric, so if applicable you should update the earlier post also.
+* CVEs
+** cves: ["CVE-2016-6151", "CVE-2016-6152"]
+
 
 Categories
 ----------

@@ -4,6 +4,8 @@ title:  "Redirecting traffic with dnsRedir.py"
 date:   2013-09-05 15:54:55
 post_author: Tim Newsham
 categories: tools
+github_name: dnsRedir
+github_link: https://github.com/iSECPartners/dnsRedir
 ---
 
 

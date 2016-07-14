@@ -4,6 +4,12 @@ title:  "Black Hat 2013 - Femtocell Presentation Slides, Videos and App"
 date:   2013-08-19 11:35:05
 post_author: Tom Ritter
 categories: conferences
+download_name: Slides
+download_link: https://www.isecpartners.com/media/106086/femtocell.pdf
+github_name: FemtoCatcher
+github_link: https://github.com/iSECPartners/femtocatcher
+conference_name: Black Hat '13
+conference_link: https://www.blackhat.com/us-13/briefings.html#Ritter
 ---
 
 

@@ -3,7 +3,10 @@ layout: post
 title:  "Working with the Open Technology Fund"
 date:   2013-10-14 15:54:55
 post_author: Tom Ritter
-categories: news
+categories: news whitepapers
+download_name: Whitepaper
+download_link: https://www.opentechfund.org/article/report-how-evaluate-technical-audits-funder
+related: ["2014/08/13/tor-browser-research-report"]
 ---
 
 

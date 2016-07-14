@@ -45,12 +45,95 @@
         </div>
 
         <div id="sidebar">
-          <h1>Column 2</h1>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>
-          <ul>
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
-          </ul>
+          {% if page.download_name and page.download_link %}
+          <div class="sidebar_item">
+            <h1>Download</h1>
+            <a class="button" href="{{ page.download_link }}">{{ page.download_name }}</a>
+          </div>
+          {% endif %}
+
+          {% if page.download_names and page.download_links %}
+          <div class="sidebar_item">
+            <h1>Download</h1>
+            {% for i in (0..page.download_links.size) %}
+            {% unless forloop.last %}
+            <a class="button" href="{{ page.download_links[i] }}">{{ page.download_names[i] }}</a>
+            {% endunless %}
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {% if page.github_name and page.github_link %}
+          <div class="sidebar_item">
+            <h1>Github</h1>
+            <a class="button" href="{{ page.github_link }}">{{ page.github_name }} on Github</a>
+          </div>
+          {% endif %}
+
+          {% if page.github_names and page.github_links %}
+          <div class="sidebar_item">
+            <h1>Github</h1>
+            {% for i in (0..page.github_names.size) %}
+            {% unless forloop.last %}
+            <a class="button" href="{{ page.github_links[i] }}">{{ page.github_names[i] }} on Github</a>
+            {% endunless %}
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {% if page.conference_name and page.conference_link %}
+          <div class="sidebar_item">
+            <h1>{{ page.conference_name }}</h1>
+            <a class="button" href="{{ page.conference_link }}">See us at {{ page.conference_name }}</a>
+          </div>
+          {% endif %}
+
+          {% if page.conference_names and page.conference_links %}
+          {% for i in (0..page.conference_names.size) %}
+          {% unless forloop.last %}
+          <div class="sidebar_item">
+            <h1>{{ page.conference_names[i] }}</h1>
+            <a class="button" href="{{ page.conference_links[i] }}">See us at {{ page.conference_names[i] }}</a>
+          </div>
+          {% endunless %}
+          {% endfor %}
+          {% endif %}
+
+          {% if page.cves %}
+          <div class="sidebar_item">
+            <h1>CVEs</h1>
+            <ul>
+            {% for c in page.cves %}
+              <li><a href="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name={{ c }}">{{ c }}</a></li>
+            {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          {% if page.related %}
+          <div class="sidebar_item">
+            <h1>Related</h1>
+            <ul>
+            {% for r in page.related %}
+              {% for p in site.posts %}
+                {% if p.id contains r %}
+                <li><a href="{{ p.url }}">{{p.title}}</a> - {{ p.date | date_to_string }}</li>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          <div class="sidebar_item">
+            <h1>Most Recent</h1>
+            <ul>
+            {% for p in site.posts %}
+            <li><a href="{{ p.url }}">{{p.title}}</a> - {{ p.date | date_to_string }}</li>
+            {% if forloop.index0 >= 2 %}{% break %}{% endif %}
+            {% endfor %}
+            </ul>
+          </div>
         </div>
 
         <div id="footer">

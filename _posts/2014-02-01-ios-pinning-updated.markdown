@@ -4,6 +4,9 @@ title:  "iOS certificate pinning code updated for iOS 7"
 date:   2014-02-01 07:51:00
 post_author: Alban Diquet
 categories: tools ios ssl
+github_name: ssl_conservatory
+github_link: https://github.com/iSECPartners/ssl-conservatory/tree/master/ios
+related: ["2013/02/19/ios-pinning"]
 ---
 
 

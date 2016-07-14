@@ -4,6 +4,11 @@ title:  "SSLyze v 0.9 released - Heartbleed edition"
 date:   2014-04-16 10:00:00
 post_author: Alban Diquet
 categories: ssl tools sslyze
+github_name: SSLyze
+github_link: https://github.com/iSECPartners/sslyze
+download_name: SSLyze
+download_link: https://github.com/iSECPartners/sslyze/releases
+related: ["2014/04/10/heartbleed-advisory", "2013/12/30/sslyze-0_8", "2013/08/14/sslyze-v0-dot-7-released"]
 ---
 
 

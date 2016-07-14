@@ -4,6 +4,8 @@ title:  "DIBF Tool Suite"
 date:   2014-04-16 12:01:05
 post_author: Nicolas Guigo
 categories: tools fuzzing
+github_name: DIBF
+github_link: https://github.com/iSECPartners/DIBF
 ---
 
 Introducing iSEC Partners' Windows driver testing suite. The source, binaries

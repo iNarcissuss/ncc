@@ -4,6 +4,8 @@ title:  "Man-in-the-Middling Non-Proxy Aware Wi-Fi Devices with a Pineapple"
 date:   2013-08-21 11:35:05
 post_author: Anson Gomes
 categories: tools
+conference_name: Black Hat '13
+conference_link: http://www.blackhat.com/us-13/briefings.html#Chittenden
 ---
 
 Every security professional has to Man-in-the-Middle (MitM) network

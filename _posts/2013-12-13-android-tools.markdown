@@ -4,6 +4,8 @@ title:  "SSL pinning bypass and other Android tools"
 date:   2013-12-13 14:42:42
 post_author: Marc Blanchou
 categories: android
+github_names: ["Android SSL Trustkiller", "Android KillPermAndSigChecks", "Android OpenDebug"]
+github_links: ["https://github.com/iSECPartners/Android-SSL-TrustKiller", "https://github.com/iSECPartners/Android-KillPermAndSigChecks", "https://github.com/iSECPartners/Android-OpenDebug"]
 ---
 
 iSEC is releasing several [Cydia Substrate][cydia-url] extensions to

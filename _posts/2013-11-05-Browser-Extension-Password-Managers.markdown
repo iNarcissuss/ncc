@@ -4,6 +4,8 @@ title:  "Browser Extension Password Managers"
 date:   2013-11-05 17:45:55
 post_author: Paul Youn
 categories: whitepapers passwords
+download_name: Whitepaper
+download_link: https://github.com/iSECPartners/publications/blob/master/whitepapers/password_managers.pdf?raw=true
 ---
 
 

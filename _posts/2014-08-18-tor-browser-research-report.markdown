@@ -4,6 +4,9 @@ title:  "Tor Browser Research Report Released"
 date:   2014-08-13 11:25:55
 post_author: Tom Ritter, Andy Grant
 categories: news whitepapers
+download_name: Whitepaper
+download_link: https://github.com/iSECPartners/publications/tree/master/reports/Tor%20Browser%20Bundle
+related: ["2013/10/14/open-tech-fund-report-release"]
 ---
 
 As part of our [work with the Open Technology

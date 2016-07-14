@@ -4,6 +4,8 @@ title:  "Tool Release: tcpprox"
 date:   2013-02-21 11:35:05
 post_author: Tim Newsham
 categories: tools
+github_name: tcpprox
+github_link: https://github.com/iSECPartners/tcpprox
 ---
 
 

@@ -4,6 +4,8 @@ title:  "An Introduction to Authenticated Encryption"
 date:   2013-04-29 11:35:05
 post_author: Shawn Fitzgerald
 categories: crypto
+download_name: Whitepaper
+download_link: https://github.com/iSECPartners/publications/raw/master/whitepapers/introduction_to_authenticated_encryption.pdf
 ---
 
 

@@ -3,7 +3,10 @@ layout: post
 title:  "Blackbox iOS App Analysis with Introspy"
 date:   2013-08-21 11:35:05
 post_author: Tom Daniels & Alban Diquet
-categories: ios tools
+categories: ios tools introspy
+github_name: Introspy iOS
+github_link: https://github.com/iSECPartners/Introspy-iOS/
+related: ["2014/01/02/ios7-tool-update", "2013/12/13/Instrospy-Android", "2013/10/27/introspy-slides-ruxcon-2013"]
 ---
 
 

@@ -4,6 +4,13 @@ title:  "Ruxcon 2013 - Introspy Presentation Slides"
 date:   2013-10-27 11:28:45
 post_author: Alban Diquet
 categories: ios android introspy conferences
+related: ["2013/12/13/Instrospy-Android"]
+download_names: ["Slides"]
+download_links: ["/publications/2013.12.13-isec-openforum-introspy.pdf"]
+github_name: Introspy iOS
+github_link: https://isecpartners.github.io/Introspy-iOS/
+conference_names: ["Ruxcon 2013"]
+conference_links: ["http://2013.ruxcon.org.au/speakers/#Alban Diquet & Marc Blanchou"]
 ---
 
 _Update: Introspy for Android is now [available][android-post]; we've also

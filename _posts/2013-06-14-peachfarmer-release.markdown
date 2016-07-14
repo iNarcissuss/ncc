@@ -4,6 +4,8 @@ title:  "Tool Release: PeachFarmer"
 date:   2013-06-14 11:35:05
 post_author: Michael Lynch
 categories: tools
+github_name: PeachFarmer
+github_link: https://github.com/iSECPartners/PeachFarmer
 ---
 
 ### Cloud-based Fuzzing with Peach

@@ -4,6 +4,10 @@ title:  "Announcing the Release of RtspFuzzer"
 date:   2014-01-07 12:13:00
 post_author: Michael Lynch
 categories: tools fuzzing
+github_name: RTSP Fuzzer
+github_link: https://github.com/iSECPartners/RtspFuzzer
+related: ["2013/12/30/vlc-vulnerability"]
+cves: ["CVE-2013-6933"]
 ---
 
 iSEC Partners is pleased to announce the release of RtspFuzzer, an open-source fuzzer for the real-time streaming protocol (RTSP). RTSP is a text-based protocol that facilitates media streaming. We have been developing this fuzzer over the past several months as we fuzz different media players. Though this protocol doesn't receive much attention, most popular media players implement it and these implementations have previously been a source of critical security vulnerabilities (including [QuickTime](http://cvedetails.com/cve/2007-6166) and [Windows Media Player](http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-3225)).

@@ -4,6 +4,8 @@ title: "iOS 7 tool updates"
 date: 2014-01-02 13:44
 post_author: Alban Diquet
 categories: ios introspy tools
+github_names: ["iOS SSL Kill Switch", "Introspy iOS"]
+github_links: ["https://github.com/iSECPartners/ios-ssl-kill-switch/", "https://github.com/iSECPartners/Introspy-iOS/"]
 ---
 
 With the availability of the evasi0n7 jailbreak and the subsequent release two

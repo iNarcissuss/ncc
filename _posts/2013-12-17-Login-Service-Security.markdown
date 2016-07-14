@@ -4,6 +4,8 @@ title:  "Login Service Security"
 date:   2013-12-17 15:58:00
 post_author: Rachel Engel
 categories: whitepapers
+download_name: Whitepaper
+download_link: https://github.com/iSECPartners/publications/blob/master/whitepapers/login_service_security.pdf?raw=true
 ---
 
 

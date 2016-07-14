@@ -4,6 +4,11 @@ title:  "Blackbox Android App Analysis with Introspy"
 date:   2013-12-13 13:42:42
 post_author: Marc Blanchou & Alban Diquet
 categories: android introspy conferences
+related: ["2013/10/27/introspy-slides-ruxcon-2013", "2014/01/02/ios7-tool-update"]
+github_names: ["Introspy Android"]
+github_links: ["https://github.com/iSECPartners/Introspy-Android"]
+conference_names: ["Ruxcon 2013"]
+conference_links: ["http://2013.ruxcon.org.au/speakers/#Alban Diquet & Marc Blanchou"]
 ---
 
 
@@ -32,6 +37,6 @@ repository][project-page] on Github.
 [openforum]: http://www.meetup.com/iSECOpenForums/
 [project-page]: https://github.com/iSECPartners/Introspy-Android
 [gh-page]: https://isecpartners.github.io/Introspy-Android/
-[ruxcon-post]: ios/android/introspy/ruxcon/2013/10/27/introspy-slides-ruxcon-2013.html
+[ruxcon-post]: /ios/android/introspy/conferences/2013/10/27/introspy-slides-ruxcon-2013.html
 [introspy-slides]: /publications/2013.12.13-isec-openforum-introspy.pdf
 [cydia]: http://www.cydiasubstrate.com/

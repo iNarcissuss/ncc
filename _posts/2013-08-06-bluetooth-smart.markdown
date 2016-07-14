@@ -4,6 +4,10 @@ title:  "Black Hat 2013 - Bluetooth Smart Presentation Available"
 date:   2013-08-06 11:35:05
 post_author: Mike Ryan
 categories: conferences
+download_name: Slides
+download_link: https://github.com/iSECPartners/publications/blob/master/presentations/bluetooth_smart_good_bad_ugly_fix-mikeryan-blackhat_2013.pdf?raw=true
+conference_name: Black Hat '13
+conference_link: https://www.blackhat.com/us-13/briefings.html#Ryan
 ---
 
 

@@ -163,6 +163,18 @@ blockquote {
   padding: 0 0 0 30px;
 }
 
+#sidebar ul, #sidebar ol {
+  padding-left:20px;
+}
+
+#sidebar a.button {
+  margin-bottom: 10px;
+}
+
+.sidebar_item {
+  padding-bottom:15px;
+}
+
 ul li {
   font-weight: 300;
 }
@@ -215,8 +227,7 @@ a.button { /* currently unusued, but look good */
   font-size: 15px;
   padding: 12px 8px 12px 8px;
   display: block;
-  float: left;
-  width: 179px;
+  text-align: center;
   margin-right: 14px;
   background: #fdfdfd; /* Old browsers */
   background: -moz-linear-gradient(top,  #fdfdfd 0%, #f2f2f2 100%); /* FF3.6+ */
@@ -358,6 +369,10 @@ h6 {
 
 
 /* Next/Previous Links */
+
+.postswitch {
+  clear:both;
+}
 
 .nextprevlink {
   white-space: nowrap;

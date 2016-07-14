@@ -4,6 +4,7 @@ title:  "iSEC Engages in TrueCrypt Audit"
 date:   2013-12-23 11:25:55
 post_author: Tom Ritter
 categories: news
+related: ["2014/04/14/iSEC-Completes-Truecrypt-Audit"]
 ---
 
 [Is TrueCrypt audited yet](http://istruecryptauditedyet.com/)? It's finally

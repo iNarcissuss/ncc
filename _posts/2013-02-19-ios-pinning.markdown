@@ -4,6 +4,9 @@ title:  "Exploring SSL Pinning on iOS"
 date:   2013-02-19 13:11:22
 post_author: Alban Diquet
 categories: ios ssl
+related: ["2014/02/01/ios-pinning-updated"]
+github_name: SSL Conservatory
+github_link: https://github.com/iSECPartners/ssl-conservatory/tree/master/ios
 ---
 
 

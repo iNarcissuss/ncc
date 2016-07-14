@@ -4,6 +4,8 @@ title:  "AWS environment security assessment with Scout2"
 date:   2014-02-19 07:51:00
 post_author: Loïc Simon
 categories: tools aws
+github_name: Scout2
+github_link: https://github.com/iSECPartners/Scout2
 ---
 
 

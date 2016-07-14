@@ -4,6 +4,8 @@ title:  "Perfect Forward Security Whitepaper"
 date:   2014-09-04 11:25:55
 post_author: Pratik Guha Sarkar
 categories: whitepapers
+download_name: Whitepaper
+download_link: https://github.com/iSECPartners/publications/blob/master/whitepapers/perfect_forward_security.pdf?raw=true
 ---
 
 Encrypted communication channels were created so nobody could read confidential communications - this means not only during the conversation, but also any time after it. But adversaries have the ability to monitor, record, and attack communication retroactively. Disclosure of state sponsored monitoring of electronic communications and the threat of retroactive decryption of traffic of millions of people has created an urge for an extra layer of security and privacy for all electronic communications.

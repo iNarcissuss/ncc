@@ -4,6 +4,9 @@ title:  "Tool Release: YoNTMA"
 date:   2013-03-18 11:35:05
 post_author: Michael Lynch
 categories: tools
+related: ["2014/05/09/yontma-mac-release"]
+github_name: YoNTMA
+github_link: https://github.com/iSECPartners/yontma
 ---
 
 You're a responsible defender of your data. You keep all of your disks encrypted. You hibernate your laptop when you're not using it to keep any sensitive data out of RAM. You're known by friends, family, and colleagues as a tireless crusader against data theft. But do you hibernate your laptop when you visit a co-worker's office for a few minutes? What about when you get up to use the bathroom? What happens if a thief snatches your laptop while it's locked, but still powered on? The encryption keys are still in memory, which makes them vulnerable to DMA or cold boot attacks. Once the thief has the data encryption keys, they effectively have physical access to an unencrypted laptop, which means game over for your data. 

@@ -3,7 +3,9 @@ layout: post
 title:  "Cryptopocalypse Reference Paper"
 date:   2014-03-20 4:35:05
 post_author: Javed Samuel
-categories: conferences crypto
+categories: conferences crypto whitepapers
+download_name: "Whitepaper"
+download_link: https://github.com/iSECPartners/publications/blob/master/whitepapers/Cryptopocalypse_Reference_Paper.pdf?raw=true
 ---
 
 Alex Stamos, Tom Ritter and Javed Samuel presented "Preparing for the

@@ -29,31 +29,37 @@
    </head>
    <body>
       <div id="container">
-         <div class="inner">
+        <div id="header">
+          <img src="/images/iseclogo.png">
+        </div>
 
-               <header>
-               <img src="/images/iseclogo.png">
-               <div id="navbar">
-               <a class="extra" href="/">Home</a> |
-               <a class="extra" href="/posts-archives/">Archives</a> |
-               <a class="extra" href="/tools/">Tools</a> |
-               <a class="extra" href="/research/">Research</a>
-               </div>
-              </header>
+        <div id="navbar">
+          <a class="extra" href="/">Home</a> |
+          <a class="extra" href="/posts-archives/">Archives</a> |
+          <a class="extra" href="/tools/">Tools</a> |
+          <a class="extra" href="/research/">Research</a>
+        </div>
 
-            <section id="{{ page.id }}" class="main_content">
+        <div id="main_content">
+            <section id="{{ page.id }}">
                {{ content }}
             </section>
+        </div>
 
+        <div id="sidebar">
+          <h2>Column 2</h2>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>
+          <ul>
+          <li><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          </ul>
+        </div>
 
-            <footer style="clear: both;">
-               <div>NCC Group -
-                     <a href="https://github.com/nccgroup/">NCC Group on GitHub</a> -
-                     <a href="https://www.isecpartners.com/about/careers.aspx">Join us!</a>
-               </div>
-            </footer>
-         </div>
+        <div id="footer">
+          NCC Group -
+                 <a href="https://github.com/nccgroup/">NCC Group on GitHub</a> -
+                 <a href="https://www.isecpartners.com/about/careers.aspx">Join us!</a>
+          </div>
       </div>
-      <!-- /container -->
    </body>
 </html>

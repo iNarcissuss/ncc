@@ -99,3 +99,21 @@ Approved/Encouraged categories:
 * conferences - for releasing slides, tools, or otherwise references a conference you presented at or we're sponsoring.
 * android
 * aws
+
+Upcoming Events/Talks
+---------------------
+
+Edit the corresponding _data/ files. While the site has logic not to show expired items, it requires the site to be rebuilt to achieve this. This can be accomplished with a dummy commit if needed; there is no need to comment or remove entries from the data files. (And please do not do so, perhaps some day we'll want to reference that data!!)  
+
+In general, Talks is for talks at security conferences, arsenal, or a time when we're presenting something. It's totally fine (and encouraged!) to list Open Forum talks we give.
+
+Events is for the rest. Trainings we're giving, Webinars, Open Forums, Conferences we're sponsoring. If the item doesn't have a link, but is an invite only thing, you can make the link an email link like so:  mailto:Bob.Dole@nccgroup.trust?subject=Invite%20Me%20To%20Seattle's%20Open%20Forum!!!
+
+Items are listed in REVERSE order of the file, which means THE ITEM WITH THE DATE FARTHEST IN THE FUTURE SHOULD BE PUT AT THE TOP OF THE FILE. Each item supports the following attributes. If a value needs a colon (:) in it, enclose the entire value in quotes.
+
+* title - Required
+* subtitle - Optional. Occurs after the title, but is not linked (if a link is specified)
+* link - Optional
+* dates - Optional. Does not need to be formatted as a date, can be any data
+* expires - Required. Must be formatted as a date
+* location - Optional

@@ -345,6 +345,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Hero', 'Helvetica Neue', Helvetica, Arial, serif;
   font-weight: bold;
   color: #444;
+  line-height: initial;
 }
 h1 {
   font-size: 32px;

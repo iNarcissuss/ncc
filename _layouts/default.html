@@ -125,6 +125,62 @@
           </div>
           {% endif %}
 
+          {% if site.data.upcoming_talks %}
+          {% assign wrote_header = 0 %}
+          {% assign talks_reversed = site.data.upcoming_talks | reverse %}
+          {% for talk in talks_reversed %}
+            {% capture nowtime %}{{ "now" | date: '%s' }}{% endcapture %}
+            {% assign nowtime = nowtime | plus: 0 %}{% comment %} Cast back to int {% endcomment %}
+            {% capture talkexpires %}{{ talk.expires | date: '%s' }}{% endcapture %}
+            {% assign talkexpires = talkexpires | plus: 0 %}
+
+            {% if nowtime < talkexpires %}
+              {% if wrote_header == 0 %}
+              {% assign wrote_header = 1 %}
+              <div class="sidebar_item">
+                <h1>Upcoming Talks</h1>
+                <ul>
+              {% endif %}
+              <li>{% if talk.link %}<a href="{{ talk.link }}">{% endif %}{{ talk.title }}{% if talk.link %}</a>{% endif %}{{ talk.subtitle }}
+              {% if talk.location or talk.dates %} - {% endif %}
+              {% if talk.dates %}{{ talk.dates }}{% if talk.location %}; {% endif %}{% endif %}
+              {% if talk.location %}{{ talk.location }}{% endif %}</li>
+            {% endif %}
+          {% endfor %}
+          {% if wrote_header == 1 %}
+            </ul>
+          </div>
+          {% endif %}
+          {% endif %}
+
+          {% if site.data.upcoming_events %}
+          {% assign wrote_header = 0 %}
+          {% assign events_reversed = site.data.upcoming_events | reverse %}
+          {% for event in events_reversed %}
+            {% capture nowtime %}{{ "now" | date: '%s' }}{% endcapture %}
+            {% assign nowtime = nowtime | plus: 0 %}{% comment %} Cast back to int {% endcomment %}
+            {% capture eventexpires %}{{ event.expires | date: '%s' }}{% endcapture %}
+            {% assign eventexpires = eventexpires | plus: 0 %}
+
+            {% if nowtime < eventexpires %}
+              {% if wrote_header == 0 %}
+              {% assign wrote_header = 1 %}
+              <div class="sidebar_item">
+                <h1>Upcoming Events</h1>
+                <ul>
+              {% endif %}
+              <li>{% if event.link %}<a href="{{ event.link }}">{% endif %}{{ event.title }}{% if event.link %}</a>{% endif %} {{ event.subtitle }}
+              {% if event.location or event.dates %} - {% endif %}
+              {% if event.dates %}{{ event.dates }}{% if event.location %}; {% endif %}{% endif %}
+              {% if event.location %}{{ event.location }}{% endif %}</li>
+            {% endif %}
+          {% endfor %}
+          {% if wrote_header == 1 %}
+            </ul>
+          </div>
+          {% endif %}
+          {% endif %}
+
           <div class="sidebar_item">
             <h1>Most Recent</h1>
             <ul>

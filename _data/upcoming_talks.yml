@@ -45,3 +45,17 @@
 #  dates: Aug 3-4, 2016
 #  expires: Aug 8, 2016
 #  link: 
+
+- title: "I Can Hear You Now: Traffic Interception and Remote Mobile Phone Cloning with a Compromised CDMA Femtocell"
+  location: BH Vegas 2013
+  expires: Sep 1, 2013
+  slides: https://github.com/iSECPartners/publications/blob/master/presentations/bh_us_2013_femtocell.pdf?raw=true
+  more: '<a href="https//github.com/isecpartners/femtocatcher">Femtocatcher</a>'
+  video: http://www.youtube.com/watch?v=gfcq8clu1RI
+
+- title: "I Can Hear You Now: Traffic Interception and Remote Mobile Phone Cloning with a Compromised CDMA Femtocell"
+  location: DEF CON 21
+  expires: Jan 1, 2013
+  slides: https://github.com/iSECPartners/publications/blob/master/presentations/bh_us_2013_femtocell.pdf?raw=true
+  video: http://www.youtube.com/watch?v=gfcq8clu1RI
+  more: '<a href="https//github.com/isecpartners/femtocatcher">Femtocatcher</a>'

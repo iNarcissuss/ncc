@@ -2,6 +2,7 @@
 layout: default
 title: iSEC Research Publications
 id: research
+permalink: /research/
 ---
 
 Whitepapers and conference presentations produced by iSEC's security

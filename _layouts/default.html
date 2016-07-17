@@ -125,9 +125,9 @@
           </div>
           {% endif %}
 
-          {% if site.data.upcoming_talks %}
+          {% if site.data.talks %}
           {% assign wrote_header = 0 %}
-          {% assign talks_reversed = site.data.upcoming_talks | reverse %}
+          {% assign talks_reversed = site.data.talks | reverse %}
           {% for talk in talks_reversed %}
             {% capture nowtime %}{{ "now" | date: '%s' }}{% endcapture %}
             {% assign nowtime = nowtime | plus: 0 %}{% comment %} Cast back to int {% endcomment %}

@@ -103,7 +103,7 @@ Approved/Encouraged categories:
 Upcoming Events/Talks
 ---------------------
 
-Edit the corresponding _data/ files. While the site has logic not to show expired items, it requires the site to be rebuilt to achieve this. This can be accomplished with a dummy commit if needed; there is no need to comment or remove entries from the data files. (And please do not do so, perhaps some day we'll want to reference that data!!)  
+Edit the corresponding _data/ files. While the site has logic not to show expired items, it requires the site to be rebuilt to achieve this. This can be accomplished with a dummy commit if needed; there is no need to comment or remove entries from the data files. DO NOT REMOVE ENTRIES FROM THE FILES! HISTORICAL ENTRIES ARE USED!
 
 In general, Talks is for talks at security conferences, arsenal, or a time when we're presenting something. It's totally fine (and encouraged!) to list Open Forum talks we give.
 
@@ -117,3 +117,5 @@ Items are listed in REVERSE order of the file, which means THE ITEM WITH THE DAT
 * dates - Optional. Does not need to be formatted as a date, can be any data
 * expires - Required. Must be formatted as a date
 * location - Optional
+* media_names - An array of names to show in the links below. Only appears on the Research page; not the sidebar.
+* media_links -  An array of links to various media about a talk. e.g.: Slides, Video, Blog, Github, Blog Followup, whatever

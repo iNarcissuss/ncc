@@ -141,7 +141,7 @@
                 <h1>Upcoming Talks</h1>
                 <ul>
               {% endif %}
-              <li>{% if talk.link %}<a href="{{ talk.link | prepend: site.baseurl }}">{% endif %}{{ talk.title }}{% if talk.link %}</a>{% endif %}{{ talk.subtitle }}
+              <li>{% if talk.link %}<a href="{{ talk.link }}">{% endif %}{{ talk.title }}{% if talk.link %}</a>{% endif %}{{ talk.subtitle }}
               {% if talk.location or talk.dates %} - {% endif %}
               {% if talk.dates %}{{ talk.dates }}{% if talk.location %}; {% endif %}{% endif %}
               {% if talk.location %}{{ talk.location }}{% endif %}</li>
@@ -169,7 +169,7 @@
                 <h1>Upcoming Events</h1>
                 <ul>
               {% endif %}
-              <li>{% if event.link %}<a href="{{ event.link | prepend: site.baseurl }}">{% endif %}{{ event.title }}{% if event.link %}</a>{% endif %} {{ event.subtitle }}
+              <li>{% if event.link %}<a href="{{ event.link }}">{% endif %}{{ event.title }}{% if event.link %}</a>{% endif %} {{ event.subtitle }}
               {% if event.location or event.dates %} - {% endif %}
               {% if event.dates %}{{ event.dates }}{% if event.location %}; {% endif %}{% endif %}
               {% if event.location %}{{ event.location }}{% endif %}</li>

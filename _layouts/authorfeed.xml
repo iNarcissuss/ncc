@@ -11,8 +11,8 @@
 	<channel>
 		<title>{{ site.name }} - {{ author }}</title>
 		<description>{{ site.description }}</description>
-		<link>{{ site.url }}{{ site.baseurl }}/authors/{{ author | replace: " ", "-" }}</link>
-		<atom:link href="{{ site.url }}{{ site.baseurl }}/feeds/authors/{{ author | replace: " ", "-" }}" rel="self" type="application/rss+xml" />
+		<link>{{ site.url }}{{ site.baseurl }}/authors/{{ author | replace: " ", "-" }}/</link>
+		<atom:link href="{{ site.url }}{{ site.baseurl }}/feeds/authors/{{ author | replace: " ", "-" }}/" rel="self" type="application/rss+xml" />
 {% for category in group_names %}
 	{% if category != author %}
 		{% continue %}

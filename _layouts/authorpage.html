@@ -14,7 +14,7 @@ layout: default
 			{{ b.blurb }}
 		{% endif %}
 	{% endfor %}
-	<a class="post_permalink" href="{{ site.baseurl }}/feeds/authors/{{ author | replace: " ", "-" }}">{{ author }} RSS Feed</a>
+	<a class="post_permalink" href="{{ site.baseurl }}/feeds/authors/{{ author | replace: " ", "-" }}/">{{ author }} RSS Feed</a>
 </p>
 
 {% for category in group_names %}

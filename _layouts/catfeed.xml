@@ -9,8 +9,8 @@
 	<channel>
 		<title>{{ site.name }} - {{ category }}</title>
 		<description>{{ site.description }}</description>
-		<link>{{ site.url }}{{ site.baseurl }}/categories/{{ category }}</link>
-		<atom:link href="{{ site.url }}{{ site.baseurl }}/feeds/categories/{{ category }}" rel="self" type="application/rss+xml" />
+		<link>{{ site.url }}{{ site.baseurl }}/categories/{{ category }}/</link>
+		<atom:link href="{{ site.url }}{{ site.baseurl }}/feeds/categories/{{ category }}/" rel="self" type="application/rss+xml" />
 		{% for post in site.categories[category] limit:30 %}
 			<item>
 				<title>{{ post.title }}</title>

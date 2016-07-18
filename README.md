@@ -1,7 +1,7 @@
-isecpartners.github.io
+nccgroup.github.io
 ======================
 
-This is our externally-facing research page. Use this site to describe tools,
+This is our externally-facing blog & research page. Use this site to describe tools,
 add blog posts, reference whitepapers or presentations, etc. If you'd like to
 make a change, please fork this repository and submit a pull request.
 
@@ -14,9 +14,9 @@ Installing Jekyll:
     gem install jekyll
 
 
-Previewing the site locally at http://localhost:4000 :
+Previewing the site locally at http://localhost:4000/ncc/ :
 
-    jekyll serve -w
+    jekyll serve
 
 
 Creating a new blog post
@@ -35,12 +35,9 @@ free to look at the existing blog posts to get examples.
 
 After writing your post, you can preview it if you have Jekyll installed:
 
-    jekyll serve -w
+    jekyll serve
 
 Once you're ready to post your article, just submit a pull request.
-
-Post Authoring
---------------
 
 Please abide by the following when authoring posts:
 
@@ -51,25 +48,25 @@ Please abide by the following when authoring posts:
 Specific tags may be added to enable certain sidebar behaviors. Note that Download, Github, and Conference all have singular versions for friendliness.
 
 * Download
-** download_name (for example 'Whitepaper' or 'ToolName Releases')
-** download_link
-** download_names: ["Bob", "Alice"] (for multiple links)
-** download_links: ["https://www....", "https://www...."]
+ * download_name: Name - for example 'Whitepaper' or 'ToolName Releases')
+ * download_link: http://www....
+ * download_names: ["Bob", "Alice"] - for multiple links
+ * download_links: ["https://www....", "https://www...."]
 * Github
-** github_name (name of the project)
-** github_link (link to github)
-** github_names (for multiple links)
-** github_links
+ * github_name: MyProject - name of the project
+ * github_link: https://github.com/nccgroup/project - link to github project
+ * github_names: ["Project 1", "Project 2"] - for multiple links
+ * github_links: ["https://github.com/nccgroup/project1", "https://github.com/nccgroup/project2"] - for multiple links
 * Conferences
-** conference_name (should be short and contain year  e.g. BH Arsenal '14 or BH EU '13)
-** conference_link (link to your talk on the conference page)
-** conference_names (for multiple links)
-** conference_links
+ * conference_name: BH Arsenal '14 - should be short and contain year e.g. BH Arsenal '14 or BH EU '13
+ * conference_link: http://www... - link to your talk on the conference page)
+ * conference_names: ["BH Vegas '14", "DEF CON 22"] - for multiple names & links
+ * conference_links: ["http://www...", "http://www..."]
 * CVEs
-** cves: ["CVE-2016-6151", "CVE-2016-6152"]
+ * cves: ["CVE-2016-6151", "CVE-2016-6152"]
 * Related
-** related: ["2014/08/13/tor-browser-research-report", "2013/10/14/open-tech-fund-report-release"] (ids of specific related blog posts)
-** Related links are _not_ symmetric, so if applicable you should update the earlier post also.
+ * related: ["2014/08/13/tor-browser-research-report", "2013/10/14/open-tech-fund-report-release"] - ids of specific related blog posts
+ * Related links are _not_ symmetric, so if applicable you should update the earlier post also.
 
 
 Categories
@@ -94,12 +91,12 @@ Approved/Encouraged categories:
 * ssl - yes even TLS topics
 * sslyze
 * passwords
-* news - for items that don't fit anywhere else. E.G. announcing we are working with a particular project or the like, sponsoring a conference
+* news - for items that don't fit anywhere else. E.G. announcing we are working with a particular project or sponsoring a conference
 * ios
 * introspy
 * fuzzing
 * crypto
-* conferences - for releasing slides, tools, or otherwise references a conference you presented at or we're sponsoring.
+* conferences - for releasing slides, tools, or otherwise references a conference you presented at or we're sponsoring
 * android
 * aws
 
@@ -115,13 +112,13 @@ Events is for the rest. Trainings we're giving, Webinars, Open Forums, Conferenc
 Items are listed in REVERSE order of the file, which means THE ITEM WITH THE DATE FARTHEST IN THE FUTURE SHOULD BE PUT AT THE TOP OF THE FILE. Each item supports the following attributes. If a value needs a colon (:) in it, enclose the entire value in quotes.
 
 * title - Required
+* expires - Required. Must be formatted as a date
 * subtitle - Optional. Occurs after the title, but is not linked (if a link is specified)
 * link - Optional
-* dates - Optional. Does not need to be formatted as a date, can be any data
-* expires - Required. Must be formatted as a date
+* dates - Optional. Does not need to be formatted as a date, can be any string
 * location - Optional
-* media_names - An array of names to show in the links below. Only appears on the Research page; not the sidebar.
-* media_links -  An array of links to various media about a talk. e.g.: Slides, Video, Blog, Github, Blog Followup, whatever
+* media_names: ["Slides", "Whitepaper"]  - An array of names to show in the links below on the research page. Only appears on the Research page; not the sidebar. e.g.: Slides, Video, Blog, Github, Blog Followup, whatever
+* media_links: ["https://www...", "https://www..."] - An array of links to various media about a talk. 
 
 Tools 
 -------
@@ -137,14 +134,14 @@ Each item supports the following attributes. If a value needs a colon (:) in it,
 * description - Technically optional by highly encouraged. Please limit to one or two sentences
 * published - Required
 * expires - Optional. If you anticipate a tool becoming outdated in a few years, e.g. because Android or iOS has updated, please be kind and put an expirey date. 
-* media_names - An array of names to show in the links below. Only appears on the Research page; not the sidebar.
-* media_links -  An array of links to various media about a talk. e.g.: Conference Presentation, Blog Post, Documentation
+* media_names: ["Slides", "Whitepaper"]  - An array of names to show in the links below the tool entry. e.g.: Slides, Video, Blog, Github, Blog Followup, whatever
+* media_links: ["https://www...", "https://www..."] - An array of links to various media about a talk. 
 
 Blog Post Checklist
 -------------------
 
 * Does the post define any new categories? If it does, has a /categories/ page been added for it?
 * Is the post by a new author? If it does, has an /authors/ page been added for them?
-* IS the post by multiple authors? If so, do they all have /authors/ pages? Are they seperated by a comma?
+* Is the post by multiple authors? If so, do they all have /authors/ pages? Are they seperated by a comma?
 * Does the post reference a github, conference talk, CVEs, or something to download?  If so, have those monikers been added in the header?
-* Is the blog post related to any other blog posts? Are they noted with the 'related' feature? Was the corresponding post updated as well?
+* Is the blog post related to any other blog posts? Are they noted with the 'related' feature? Was the related post updated as well?

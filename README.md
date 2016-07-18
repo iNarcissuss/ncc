@@ -46,6 +46,7 @@ Please abide by the following when authoring posts:
 
 * Do not use any H1 headers (in markdown, single #). Start with the H2 header (in markdown, double ##)
 * Do not separate the categories by commas
+* If this is the first time you've authored a blog, create a /authors/ stub page for yourself
 
 Specific tags may be added to enable certain sidebar behaviors. Note that Download, Github, and Conference all have singular versions for friendliness.
 
@@ -64,11 +65,11 @@ Specific tags may be added to enable certain sidebar behaviors. Note that Downlo
 ** conference_link (link to your talk on the conference page)
 ** conference_names (for multiple links)
 ** conference_links
+* CVEs
+** cves: ["CVE-2016-6151", "CVE-2016-6152"]
 * Related
 ** related: ["2014/08/13/tor-browser-research-report", "2013/10/14/open-tech-fund-report-release"] (ids of specific related blog posts)
 ** Related links are _not_ symmetric, so if applicable you should update the earlier post also.
-* CVEs
-** cves: ["CVE-2016-6151", "CVE-2016-6152"]
 
 
 Categories
@@ -81,6 +82,7 @@ If you need to add another, please follow these specific guidelines:
 * Do make a category about a specific project when this is the second post about it. Add the category to your first post at this time also
 * Do make the category all lowercase
 * Do not separate the categories by commas
+* Do create a /categories/ stub page
 
 
 Approved/Encouraged categories:
@@ -136,3 +138,12 @@ Each item supports the following attributes. If a value needs a colon (:) in it,
 * expires - Optional. If you anticipate a tool becoming outdated in a few years, e.g. because Android or iOS has updated, please be kind and put an expirey date. 
 * media_names - An array of names to show in the links below. Only appears on the Research page; not the sidebar.
 * media_links -  An array of links to various media about a talk. e.g.: Conference Presentation, Blog Post, Documentation
+
+Blog Post Checklist
+-------------------
+
+* Does the post define any new categories? If it does, has a /categories/ page been added for it?
+* Is the post by a new author? If it does, has an /authors/ page been added for them?
+* IS the post by multiple authors? If so, do they all have /authors/ pages? Are they seperated by a comma?
+* Does the post reference a github, conference talk, CVEs, or something to download?  If so, have those monikers been added in the header?
+* Is the blog post related to any other blog posts? Are they noted with the 'related' feature? Was the corresponding post updated as well?

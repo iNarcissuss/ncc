@@ -2,7 +2,7 @@
 layout: post
 title:  "Heartbleed (CVE-2014-0160) Advisory"
 date:   2014-04-10 11:00:00
-post_author: Andy Grant, Justin Engler, Aaron Grattafiori
+post_author: Andy Grant,Justin Engler,Aaron Grattafiori
 categories: advisories ssl
 related: ["2014/04/16/SSLyze-0.9-heartbleed-edition"]
 ---

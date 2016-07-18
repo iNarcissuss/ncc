@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+{% assign author_url = page.permalink | split: "/" %}
+{% assign author = author_url[2] | replace: "-", " " %}
+
+{% include group-by-array.html collection=site.posts field='post_author' %}
+
+<h1 class="postmainpage"> Posts by {{ author }}</h1>
+{% for category in group_names %}
+	{% if category != author %}
+		{% continue %}
+	{% endif %}
+
+	{% assign posts = group_items[forloop.index0] %}
+    {% if category.size == 0 %}
+    {% else %}
+		{% for post in posts %}
+			{% include post_as_part_of_multipage.html %}
+		{% endfor %}
+	{% endif %}
+{% endfor %}

@@ -1,16 +1,16 @@
 ---
 layout: default
 title: iSEC Research Labs
-permalink: /posts-archives-bycat/
+permalink: /posts-archives-byauthor/
 ---
 
-{% include group-by-array.html collection=site.posts field='categories' %}
+{% include group-by-array.html collection=site.posts field='post_author' %}
 
 <h1>Post Archives</h1>
 
 {% include archives-navbar.html %}
 
-<h2>All Blog Posts By Category</h2>
+<h2>All Blog Posts By Author</h2>
 
 <ul  class="posts">
   {% for category in group_names %}
@@ -19,7 +19,7 @@ permalink: /posts-archives-bycat/
 
     {% else %}
     <li>
-      <h3><a href="/categories/{{ category }}">{{ category }}</a></h3>
+      <h3><a href="/authors/{{ category | replace: " ", "-" }}/">{{ category }}</a></h3>
       <ul class="posts">
         {% for post in posts %}
           <li><span class="hero">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>

@@ -1,6 +1,12 @@
 <div>
     <h1 class="posttitle">{{ post.title }}</h1>
-    <h6>{{ post.date | date_to_string }} - {{ post.post_author }}</h6>
+    <h6>{{ post.date | date_to_string }} - 
+    	{% assign postauthors = post.post_author | split:"," %}
+    	{% for a in postauthors %}
+    		{% assign author = a | strip %}
+		   	<a href="/authors/{{ author | replace: " ", "-" }}">{{ author }}</a>{% unless forloop.last %}, {% endunless %}
+    	{% endfor %}
+	</h6>
     <h6>Categories: {% for c in post.categories %} <a href="/categories/{{ c }}">{{ c }}</a> {% endfor %}</h6>
 </div>
 

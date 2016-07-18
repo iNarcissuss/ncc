@@ -2,7 +2,7 @@
 layout: post
 title:  "Shellshock Advisory"
 date:   2014-09-25 1:23:55
-post_author: iSEC Partners
+post_author: NCC Group
 categories: advisories
 ---
 

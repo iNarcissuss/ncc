@@ -60,7 +60,7 @@ and a server on the Internet which can be understood as:
 3. The target device is configured to talk to the Pineapple.
 4. All monitoring and interception happens on the testing laptop.
 
-![Pineapple setup](../../../../images/anson/pineapple_set_up_617x206.jpg)
+![Pineapple setup]({{ site.baseurl }}/images/anson/pineapple_set_up_617x206.jpg)
 
 Note: You can modify this setup to suit your needs, e.g. connect the Pineapple
 to the laptop via the Ethernet port and connect the laptop to the Internet via
@@ -76,7 +76,7 @@ The adjacent screenshot of an iPad (used for demonstration) connected to the
 Pineapple depicts this information. You can change these settings by SSHing
 into the Pineapple and by modifying its configurations.
 
-![Network Settings](../../../../images/anson/network_settings.jpg)
+![Network Settings]({{ site.baseurl }}/images/anson/network_settings.jpg)
 
 You can now connect a device to the AP created by the Pineapple; however, the
 device will not be able to connect to the Internet because we haven't
@@ -110,7 +110,7 @@ this information by running ifconfig on the laptop. Download the script from
 the website and execute it inputting the necessary configuration so that it
 executes successfully as seen in the screenshot below.
 
-![Executing wp4.sh](../../../../images/anson/successful_execution_of_the_wp4.jpg)
+![Executing wp4.sh]({{ site.baseurl }}/images/anson/successful_execution_of_the_wp4.jpg)
 
 Once you have ICS configured, the device connected to the Pineapple will be
 able to access the Internet. As mentioned earlier, the Pineapple comes with a
@@ -118,13 +118,13 @@ plethora of tools which can be managed via a web interface. This web interface
 also lists all the devices that are connected to it and also has a logging
 functionality which can be really useful.
 
-![Device list](../../../../images/anson/devices.jpg)
+![Device list]({{ site.baseurl }}/images/anson/devices.jpg)
 
 You can also monitor the traffic flowing through the Pineapple using packet
 capture software such as [Wireshark](http://www.wireshark.org) by sniffing on
 the Wi-Fi adapter of the laptop.
 
-![Monitoring with Wireshark](../../../../images/anson/monitoring.jpg)
+![Monitoring with Wireshark]({{ site.baseurl }}/images/anson/monitoring.jpg)
 
 Now that you can monitor the network traffic flowing through the Pineapple,
 let's look at how to send this traffic to a proxy server so that we can
@@ -155,7 +155,7 @@ of the laptop and intercept traffic on port 8080. Using this setup we can make
 changes to the network traffic on the fly as shown in the screenshot below
 (where the iPad is used just for demonstration):
 
-![Burp screenshot](../../../../images/anson/burp.jpg)
+![Burp screenshot]({{ site.baseurl }}/images/anson/burp.jpg)
 
 Note:Intercepting SSL traffic from the embedded device could be a little
 tricky and difficult based on the security configuration of the device. You

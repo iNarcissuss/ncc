@@ -25,7 +25,7 @@ with an A7 chip (such as the iPhone 5s and the iPad Air).
 
 Both tools were successfully tested on an iPhone 5s running iOS 7.0.4:
 
-<center> ![screenshot](/images/introspy-ios7.png) </center>
+![screenshot]({{ site.baseurl }}/images/introspy-ios7.png) 
 
 
 ### Sandbox changes in iOS 7

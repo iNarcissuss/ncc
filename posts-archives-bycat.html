@@ -1,0 +1,36 @@
+---
+layout: default
+title: iSEC Research Labs
+permalink: /posts-archives-bycat/
+---
+
+{% include group-by-array.html collection=site.posts field='categories' %}
+
+<h1>Post Archives</h1>
+
+<div id="navbar">
+<a class="extra" href="/posts-archives-bycat/">By Category</a> |
+<a class="extra" href="/posts-archives-bydate/">By Date</a> |
+<a class="extra" href="/posts-archives-all/">One Long Page</a> |
+<a class="extra" href="/feed.xml">RSS</a>
+</div>
+
+<h2>All Blog Posts By Category</h2>
+
+<ul  class="posts">
+  {% for category in group_names %}
+    {% assign posts = group_items[forloop.index0] %}
+    {% if category.size == 0 %}
+
+    {% else %}
+    <li>
+      <h3><a href="/categories/{{ category }}">{{ category }}</a></h3>
+      <ul class="posts">
+        {% for post in posts %}
+          <li><span class="hero">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endif %}
+  {% endfor %}
+</ul>

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: iSEC Research Labs
-permalink: /posts-archives/
+permalink: /posts-archives-all/
 ---
 
 <h1>Post Archives</h1>
@@ -13,5 +13,8 @@ permalink: /posts-archives/
 <a class="extra" href="/feed.xml">RSS</a>
 </div>
 
+<h1 class="postmainpage">All Blog Posts in One Page</h1>
 
-
+{% for post in site.posts %}
+{% include post_as_part_of_multipage.html %}
+{% endfor %}

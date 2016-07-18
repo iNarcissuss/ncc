@@ -1,7 +1,7 @@
 ---
 layout: default
 title: iSEC Research Labs
-permalink: /posts-archives/
+permalink: /posts-archives-bydate/
 ---
 
 <h1>Post Archives</h1>
@@ -13,5 +13,12 @@ permalink: /posts-archives/
 <a class="extra" href="/feed.xml">RSS</a>
 </div>
 
+<h2>All Blog Posts By Date</h2>
+
+<ul class="posts">
+{% for post in site.posts %}
+  <li><span class="hero">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>
 
 

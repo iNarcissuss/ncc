@@ -1,0 +1,35 @@
+---
+---
+
+{% assign author_url = page.permalink | split: "/" %}
+{% assign author = author_url[3] | replace: "-", " " %}
+
+{% include group-by-array.html collection=site.posts field='post_author' %}
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>{{ site.name }} - {{ author }}</title>
+		<description>{{ site.description }}</description>
+		<link>{{ site.url }}{{ site.baseurl }}/authors/{{ author | replace: " ", "-" }}</link>
+		<atom:link href="{{ site.url }}{{ site.baseurl }}/feeds/authors/{{ author | replace: " ", "-" }}" rel="self" type="application/rss+xml" />
+{% for category in group_names %}
+	{% if category != author %}
+		{% continue %}
+	{% endif %}
+	{% assign posts = group_items[forloop.index0] %}
+    {% if category.size == 0 %}
+    {% else %}
+		{% for post in posts %}
+			<item>
+				<title>{{ post.title }}</title>
+				<description>{{ post.content | xml_escape }}</description>
+				<pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+				<link>{{ site.url }}{{ site.baseurl }}{{ post.url }}</link>
+				<guid isPermaLink="true">{{ site.url }}{{ site.baseurl }}{{ post.url }}</guid>
+			</item>
+		{% endfor %}
+	{% endif %}
+{% endfor %}
+	</channel>
+</rss>

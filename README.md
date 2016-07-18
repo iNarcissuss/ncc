@@ -79,7 +79,7 @@ If you need to add another, please follow these specific guidelines:
 * Do make a category about a specific project when this is the second post about it. Add the category to your first post at this time also
 * Do make the category all lowercase
 * Do not separate the categories by commas
-* Do create a /categories/ stub page
+* Do create a /categories/ and a /feeds/categories/ stub page
 * If the category is associated with a practice, add a blurb to _data/blurbs.yml
 
 
@@ -140,8 +140,8 @@ Each item supports the following attributes. If a value needs a colon (:) in it,
 Blog Post Checklist
 -------------------
 
-* Does the post define any new categories? If it does, has a /categories/ page been added for it?
-* Is the post by a new author? If it does, has an /authors/ page been added for them?
+* Does the post define any new categories? If it does, has a /categories/ and a /feeds/categories/ page been added for it?
+* Is the post by a new author? If it does, has an /authors/ and a /feeds/authors/ page been added for them?
 * Is the post by multiple authors? If so, do they all have /authors/ pages? Are they seperated by a comma?
 * Does the post reference a github, conference talk, CVEs, or something to download?  If so, have those monikers been added in the header?
 * Is the blog post related to any other blog posts? Are they noted with the 'related' feature? Was the related post updated as well?

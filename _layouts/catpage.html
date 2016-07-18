@@ -12,6 +12,7 @@ layout: default
 			{{ b.blurb }}
 		{% endif %}
 	{% endfor %}
+	<a class="post_permalink" href="{{ site.baseurl }}/feeds/categories/{{ category }}">{{ category }} RSS Feed</a>
 </p>
 
 {% for post in site.categories[category] %}

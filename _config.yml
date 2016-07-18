@@ -3,6 +3,7 @@ markdown: kramdown
 highlighter: rouge
 description: NCC Group's engineers often release open-source tools, whitepapers, and research presentations as part of our work. This is where we keep them.
 url: https://webtest1.github.io/
+baseurl: /ncc
 paginate: 5
 future: false
 lsi: false

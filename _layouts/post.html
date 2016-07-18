@@ -11,10 +11,10 @@ layout: default
     	{% assign postauthors = page.post_author | split:"," %}
     	{% for a in postauthors %}
     		{% assign author = a | strip %}
-		   	<a href="/authors/{{ author | replace: " ", "-" }}">{{ author }}</a>{% unless forloop.last %}, {% endunless %}
+		   	<a href="{{ site.baseurl }}/authors/{{ author | replace: " ", "-" }}">{{ author }}</a>{% unless forloop.last %}, {% endunless %}
     	{% endfor %}
 	</h6>
-    <h6>Categories: {% for c in page.categories %} <a href="/categories/{{ c }}">{{ c }}</a> {% endfor %}</h6>
+    <h6>Categories: {% for c in page.categories %} <a href="{{ site.baseurl }}/categories/{{ c }}">{{ c }}</a> {% endfor %}</h6>
 </div>
 
 <div lang="en" class="post">
@@ -47,7 +47,7 @@ layout: default
 
 	<div class="postswitch">
 	{% if categoryprev.url %}
-	  <h6 class="navpost navpost_right"><span class="right"> &raquo; </span> <a class="navright" href="{{categoryprev.url}}" title="Previous Post: {{categoryprev.title}}">{{categoryprev.title}}</a></h6>
+	  <h6 class="navpost navpost_right"><span class="right"> &raquo; </span> <a class="navright" href="{{categoryprev.url | prepend: site.baseurl}}" title="Previous Post: {{categoryprev.title}}">{{categoryprev.title}}</a></h6>
 	{% endif %}
 
 	{% if categoryprev.url %}
@@ -55,7 +55,7 @@ layout: default
 	{% endif %}
 
 	{% if categorynext.url %}
-	  <h6 class="navpost navpost_left"> <span>&laquo;</span> <a class="navleft"  href="{{categorynext.url}}" title="Next Post: {{categorynext.title}}">{{categorynext.title}}</a></h6>
+	  <h6 class="navpost navpost_left"> <span>&laquo;</span> <a class="navleft"  href="{{categorynext.url | prepend: site.baseurl}}" title="Next Post: {{categorynext.title}}">{{categorynext.title}}</a></h6>
 	{% endif %}
 
 	{% if categoryprev == None and categorynext.url %}
@@ -68,7 +68,7 @@ layout: default
 <div class="postswitch">
 {% assign previous = page.previous %}
 {% if previous.url %}
-  <h6 class="navpost navpost_right"><span class="right"> &raquo; </span> <a class="navright" href="{{previous.url}}" title="Previous Post: {{previous.title}}">{{previous.title}}</a></h6>
+  <h6 class="navpost navpost_right"><span class="right"> &raquo; </span> <a class="navright" href="{{previous.url | prepend: site.baseurl}}" title="Previous Post: {{previous.title}}">{{previous.title}}</a></h6>
 {% endif %}
 
 {% if previous.url %}
@@ -77,7 +77,7 @@ layout: default
 
 {% assign next = page.next %}
 {% if next.url %}
-  <h6 class="navpost navpost_left"> <span>&laquo;</span> <a class="navleft"  href="{{next.url}}" title="Next Post: {{next.title}}">{{next.title}}</a></h6>
+  <h6 class="navpost navpost_left"> <span>&laquo;</span> <a class="navleft"  href="{{next.url | prepend: site.baseurl}}" title="Next Post: {{next.title}}">{{next.title}}</a></h6>
 {% endif %}
 
 {% if previous == Empty and next %}

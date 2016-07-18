@@ -19,10 +19,10 @@ permalink: /posts-archives-bycat/
 
     {% else %}
     <li>
-      <h3><a href="/categories/{{ category }}">{{ category }}</a></h3>
+      <h3><a href="{{ site.baseurl }}/categories/{{ category }}">{{ category }}</a></h3>
       <ul class="posts">
         {% for post in posts %}
-          <li><span class="hero">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+          <li><span class="hero">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
         {% endfor %}
       </ul>
     </li>

@@ -4,10 +4,10 @@
     	{% assign postauthors = post.post_author | split:"," %}
     	{% for a in postauthors %}
     		{% assign author = a | strip %}
-		   	<a href="/authors/{{ author | replace: " ", "-" }}">{{ author }}</a>{% unless forloop.last %}, {% endunless %}
+		   	<a href="{{ site.baseurl }}/authors/{{ author | replace: " ", "-" }}">{{ author }}</a>{% unless forloop.last %}, {% endunless %}
     	{% endfor %}
 	</h6>
-    <h6>Categories: {% for c in post.categories %} <a href="/categories/{{ c }}">{{ c }}</a> {% endfor %}</h6>
+    <h6>Categories: {% for c in post.categories %} <a href="{{ site.baseurl }}/categories/{{ c }}">{{ c }}</a> {% endfor %}</h6>
 </div>
 
 {% if forloop.last %}
@@ -17,5 +17,5 @@
 <div lang="en" class="postmainpage">
 {% endif %}
 {{ post.content }}
-<a class="post_permalink" href="{{ post.url }}">Permalink</a>
+<a class="post_permalink" href="{{ post.url | prepend: site.baseurl }}">Permalink</a>
 </div>

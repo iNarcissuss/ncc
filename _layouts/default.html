@@ -6,9 +6,9 @@
       <title>{{ page.title }}</title>
       <meta name="viewport" content="width=device-width">
       <!-- syntax highlighting CSS -->
-      <link rel="stylesheet" href="/css/syntax.css">
+      <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
       <!-- Custom CSS -->
-      <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
       <!--
       <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -30,14 +30,14 @@
    <body>
       <div id="container">
         <div id="header">
-          <img src="/images/ncclogo.jpg">
+          <img src="{{ site.baseurl }}/images/ncclogo.jpg">
         </div>
 
         <div id="navbar">
-          <a href="/">Home</a> |
-          <a href="/posts-archives/">Archives</a> |
-          <a href="/research/">Research</a> |
-          <a href="/tools/">Tools</a>
+          <a href="{{ site.baseurl }}/">Home</a> |
+          <a href="{{ site.baseurl }}/posts-archives/">Archives</a> |
+          <a href="{{ site.baseurl }}/research/">Research</a> |
+          <a href="{{ site.baseurl }}/tools/">Tools</a>
         </div>
 
         <div id="main_content">
@@ -117,7 +117,7 @@
             {% for r in page.related %}
               {% for p in site.posts %}
                 {% if p.id contains r %}
-                <li><a href="{{ p.url }}">{{p.title}}</a> - {{ p.date | date_to_string }}</li>
+                <li><a href="{{ p.url | prepend: site.baseurl }}">{{p.title}}</a> - {{ p.date | date_to_string }}</li>
                 {% endif %}
               {% endfor %}
             {% endfor %}
@@ -141,7 +141,7 @@
                 <h1>Upcoming Talks</h1>
                 <ul>
               {% endif %}
-              <li>{% if talk.link %}<a href="{{ talk.link }}">{% endif %}{{ talk.title }}{% if talk.link %}</a>{% endif %}{{ talk.subtitle }}
+              <li>{% if talk.link %}<a href="{{ talk.link | prepend: site.baseurl }}">{% endif %}{{ talk.title }}{% if talk.link %}</a>{% endif %}{{ talk.subtitle }}
               {% if talk.location or talk.dates %} - {% endif %}
               {% if talk.dates %}{{ talk.dates }}{% if talk.location %}; {% endif %}{% endif %}
               {% if talk.location %}{{ talk.location }}{% endif %}</li>
@@ -169,7 +169,7 @@
                 <h1>Upcoming Events</h1>
                 <ul>
               {% endif %}
-              <li>{% if event.link %}<a href="{{ event.link }}">{% endif %}{{ event.title }}{% if event.link %}</a>{% endif %} {{ event.subtitle }}
+              <li>{% if event.link %}<a href="{{ event.link | prepend: site.baseurl }}">{% endif %}{{ event.title }}{% if event.link %}</a>{% endif %} {{ event.subtitle }}
               {% if event.location or event.dates %} - {% endif %}
               {% if event.dates %}{{ event.dates }}{% if event.location %}; {% endif %}{% endif %}
               {% if event.location %}{{ event.location }}{% endif %}</li>
@@ -185,7 +185,7 @@
             <h1>Most Recent</h1>
             <ul>
             {% for p in site.posts %}
-            <li><a href="{{ p.url }}">{{p.title}}</a> - {{ p.date | date_to_string }}</li>
+            <li><a href="{{ p.url | prepend: site.baseurl }}">{{p.title}}</a> - {{ p.date | date_to_string }}</li>
             {% if forloop.index0 >= 2 %}{% break %}{% endif %}
             {% endfor %}
             </ul>

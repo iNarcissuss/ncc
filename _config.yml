@@ -1,5 +1,5 @@
 name: NCC Group Test Blog
-markdown: redcarpet
+markdown: kramdown
 highlighter: pygments
 description: NCC Group's engineers often release open-source tools, whitepapers, and research presentations as part of our work. This is where we keep them.
 url: https://webtest1.github.io/

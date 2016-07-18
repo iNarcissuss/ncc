@@ -6,6 +6,14 @@ layout: default
 {% assign category = cat_url[2] %}
 
 <h1> Posts tagged {{ category }}</h1>
+<p class="postmainpage">
+	{% for b in site.data.blurbs %}
+		{% if b.type == "category" and b.anchor == category %}
+			{{ b.blurb }}
+		{% endif %}
+	{% endfor %}
+</p>
+
 {% for post in site.categories[category] %}
 {% include post_as_part_of_multipage.html %}
 {% endfor %}

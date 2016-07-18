@@ -83,6 +83,7 @@ If you need to add another, please follow these specific guidelines:
 * Do make the category all lowercase
 * Do not separate the categories by commas
 * Do create a /categories/ stub page
+* If the category is associated with a practice, add a blurb to _data/blurbs.yml
 
 
 Approved/Encouraged categories:

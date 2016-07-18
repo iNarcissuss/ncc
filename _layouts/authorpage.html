@@ -7,7 +7,15 @@ layout: default
 
 {% include group-by-array.html collection=site.posts field='post_author' %}
 
-<h1 class="postmainpage"> Posts by {{ author }}</h1>
+<h1> Posts by {{ author }}</h1>
+<p class="postmainpage">
+	{% for b in site.data.blurbs %}
+		{% if b.type == "author" and b.anchor == author %}
+			{{ b.blurb }}
+		{% endif %}
+	{% endfor %}
+</p>
+
 {% for category in group_names %}
 	{% if category != author %}
 		{% continue %}

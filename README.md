@@ -16,7 +16,7 @@ Installing Jekyll:
 
 Previewing the site locally at http://localhost:4000/ncc/ :
 
-    jekyll serve
+    jekyll serve -b /ncc
 
 
 Creating a new blog post
@@ -35,7 +35,7 @@ free to look at the existing blog posts to get examples.
 
 After writing your post, you can preview it if you have Jekyll installed:
 
-    jekyll serve
+    jekyll serve -b /ncc
 
 Once you're ready to post your article, just submit a pull request.
 

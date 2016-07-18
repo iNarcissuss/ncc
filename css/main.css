@@ -177,6 +177,7 @@ blockquote {
 
 ul li {
   font-weight: 300;
+  padding-bottom: 5px;
 }
 
 ol li {

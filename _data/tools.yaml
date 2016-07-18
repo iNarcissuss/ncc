@@ -1,0 +1,104 @@
+- title: YoNTMA for Mac
+  link: https://github.com/iSECPartners/yontma-mac
+  description: The Mac version of YoNTMA.
+  published: Jan 1, 2015
+
+- title: Introspy-iOS
+  link: https://isecpartners.github.io/Introspy-iOS
+  description: Black box security profiler to help assessing the security of iOS apps.
+  published: Jan 1, 2014
+
+- title: ios-ssl-killswitch
+  link: https://github.com/iSECPartners/ios-ssl-kill-switch
+  description: Black box tool to disable SSL certificate verification/pinning in iOS apps.
+  published: Jan 1, 2014
+  expires: Jan 1, 2016
+
+- title: SecureNSCoder
+  link: https://github.com/iSECPartners/SecureNSCoder
+  description: Secure state preservation for iOS.
+  published: Jan 1, 2014
+
+- title: SSLCertificatePinning
+  link: https://github.com/iSECPartners/ssl-conservatory/tree/master/ios)
+  description: Helper class to implement certificate pinning for SSL connections within an app.
+  published: Jan 1, 2014
+
+- title: Introspy-Android
+  link: https://isecpartners.github.io/Introspy-Android
+  description: Black box security profiler to help assessing the security of Android apps.
+  published: Jan 1, 2014
+
+- title: Android-SSL-TrustKiller
+  link: https://github.com/iSECPartners/Android-SSL-TrustKiller
+  description: Cydia Substrate extension to disable SSL certificate verification/pinning in all apps.
+  published: Jan 1, 2014
+
+- title: Android-OpenDebug
+  link: https://github.com/iSECPartners/Android-OpenDebug
+  description: Cydia Substrate extension to make all apps debuggable.
+  published: Jan 1, 2014
+
+- title: femtocatcher
+  link: https://github.com/iSECPartners/femtocatcher
+  description: App to prevent an Android phone from associating with femtocells.
+  published: Jan 1, 2014
+  media_names: ["Blog Post"]
+  media_links: ["/conferences/2013/08/19/femtocell-slides.html"]
+
+- title: Package Play
+  link: https://github.com/iSECPartners/package-play
+  description: Tool to examine the details of Android packages installed on a device.
+  published: Jan 1, 2014
+
+- title: Manifest Explorer
+  link: https://github.com/iSECPartners/manifest-explorer
+  description: Android Manifest file explorer for Android apps installed on a device.
+  published: Jan 1, 2014
+
+- title: SSLyze
+  link: https://github.com/iSECPartners/sslyze
+  description: Fast and full-featured SSL scanner.
+  published: Jan 1, 2014
+
+- title: tcpprox
+  link: https://github.com/iSECPartners/tcpprox
+  description: Simple TCP proxy written in Python with SSL and IPv6 support.
+  published: Jan 1, 2014
+
+- title: dnsRedir
+  link: https://github.com/iSECPartners/dnsRedir
+  description: Small DNS server for providing forged replies to specific domain queries.
+  published: Jan 1, 2014
+
+- title: TLSPretense
+  link: https://github.com/iSECPartners/tlspretense
+  description: SSL/TLS client testing framework.
+  published: Jan 1, 2014
+
+- title: PeachFarmer
+  link: https://github.com/iSECPartners/PeachFarmer
+  description: Framework to collect Peach fuzzing results from a distributed fuzzing cluster.
+  published: Jan 1, 2014
+  media_names: ["Blog Post"]
+  media_links: ["/tools/2013/06/14/peachfarmer-release.html"]
+
+- title: R2B2
+  link: https://github.com/iSECPartners/R2B2
+  description: Tools and schematics for building a PIN brute-forcing robot.
+  published: Jan 1, 2014
+
+- title: nano-ecc
+  link: https://github.com/iSECPartners/nano-ecc
+  description: Very small ECDH and ECDSA implementation for 8-bit microcontrollers.
+  published: Jan 1, 2014
+
+- title: AWS Scout2
+  link: https://isecpartners.github.io/Scout2/
+  description: Python client that helps assessing the security of AWS environments.
+  published: Jan 1, 2014
+
+- title: YoNTMA
+  link: https://github.com/iSECPartners/yontma
+  description: Laptop data protection tool for the truly paranoid.
+  published: Jan 1, 2013

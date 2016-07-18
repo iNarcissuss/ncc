@@ -119,3 +119,20 @@ Items are listed in REVERSE order of the file, which means THE ITEM WITH THE DAT
 * location - Optional
 * media_names - An array of names to show in the links below. Only appears on the Research page; not the sidebar.
 * media_links -  An array of links to various media about a talk. e.g.: Slides, Video, Blog, Github, Blog Followup, whatever
+
+Tools 
+-------
+
+To add a tool to the Tools page, edit _data/tools.yml.  It displays tools in the order of the file, so place NEWEST ENTRIES AT THE TOP.  DO NOT REMOVE ENTRIES FROM THE FILE.
+
+If you update a tool and want it bumped 'higher' in the date list to reflect more activity, that is __encouraged__. Update the published date!! It would be best if you limited yourself to linking to one blog post though, perhaps title it 'Latest Blog Post'.  (And remember to use the 'related' feature of blog posts to link to past ones!)
+
+Each item supports the following attributes. If a value needs a colon (:) in it, enclose the entire value in quotes.
+
+* title - Required
+* link - Required, this would most likely be to the github page or the github release page 
+* description - Technically optional by highly encouraged. Please limit to one or two sentences
+* published - Required
+* expires - Optional. If you anticipate a tool becoming outdated in a few years, e.g. because Android or iOS has updated, please be kind and put an expirey date. 
+* media_names - An array of names to show in the links below. Only appears on the Research page; not the sidebar.
+* media_links -  An array of links to various media about a talk. e.g.: Conference Presentation, Blog Post, Documentation

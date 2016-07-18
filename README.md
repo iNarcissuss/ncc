@@ -144,4 +144,5 @@ Blog Post Checklist
 * Is the post by a new author? If it does, has an /authors/ and a /feeds/authors/ page been added for them?
 * Is the post by multiple authors? If so, do they all have /authors/ pages? Are they seperated by a comma?
 * Does the post reference a github, conference talk, CVEs, or something to download?  If so, have those monikers been added in the header?
+* Does the post release a tool that should be added to the _data/tools.yml file?
 * Is the blog post related to any other blog posts? Are they noted with the 'related' feature? Was the related post updated as well?
